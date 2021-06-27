@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  created_date: 2021-06-27
+  ship_date: 2021-06-27
+  Arrival_time: 1
+  vehicle: 1
+  unic: false
+  waiting_place: false
+  rain: MyString
+  delivery: MyString
+  delivery_person: MyString
+  delivery_tel: MyString
+  delivery_address: MyString
+  order_no: 1
+  construction_name: MyString
+  construction_metal: false
+  remark: MyString
+
+two:
+  created_date: 2021-06-27
+  ship_date: 2021-06-27
+  Arrival_time: 1
+  vehicle: 1
+  unic: false
+  waiting_place: false
+  rain: MyString
+  delivery: MyString
+  delivery_person: MyString
+  delivery_tel: MyString
+  delivery_address: MyString
+  order_no: 1
+  construction_name: MyString
+  construction_metal: false
+  remark: MyString

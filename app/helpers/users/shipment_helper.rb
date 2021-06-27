@@ -1,0 +1,2 @@
+module Users::ShipmentHelper
+end
