@@ -32,4 +32,5 @@ class Users::ShipmentsController < ApplicationController
       :remark,
       :user_id
     )
+  end
 end

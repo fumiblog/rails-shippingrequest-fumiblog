@@ -1,0 +1,52 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="<%= root_path %>" class="navbar-brand"><%= image_tag 'kashiwagi.png', :size => '150x200' %></a>
+      <div class="sign-message">
+        <% if user_signed_in? %>
+          <div class="sign-in-message"><%= current_user.name %>さんようこそ！</div>
+        <% elsif admin_signed_in? %>
+          <div class="sign-in-message">ご苦労様！</div>
+        <% else %>
+          <div class="sign-before">ログインして下さい！</div>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-lavel="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Master
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if admin_signed_in? %>
+                <li><a href="<%#= admins_genres_path %>" class="dropdown-item">Genre</a></li>
+                <li><a href="<%#= admins_categories_path %>" class="dropdown-item">Category</a></li>
+                <li><a href="<%#= admins_details_path %>" class="dropdown-item">Detail</a></li>
+              <% elsif user_signed_in? %>
+                <li><a href="<%#= users_categories_path %>" class="dropdown-item">Category</a></li>
+                <li><a href="<%#= users_details_path %>" class="dropdown-item">Detail</a></li>
+              <% else %>
+              <% end %>
+            </ul>
+          </li>
+          <% if user_signed_in? || admin_signed_in? %>
+            <li class="nav-item">
+              <a href="<%= destroy_user_session_path %>" class="nav-link" data-method="delete" tavindex="-1" aria-disabled="true">Logout</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a href="<%= new_user_session_path %>" class="nav-link" tavindex="-1" aria-disabled="true">Login</a>
+            </li>
+          <% end %>
+        </ul>
+        <form action="" class="d-flex">
+          <input type="seatch" class="form-control me-2" placeholder="Search（調整中）" aria-lavel="Serch">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

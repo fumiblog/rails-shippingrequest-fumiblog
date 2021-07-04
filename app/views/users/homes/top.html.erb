@@ -1,3 +1,10 @@
-<h1>Users::Homes#top</h1>
-<p>Find me in app/views/users/homes/top.html.erb</p>
-<div id='calendar'></div>
+<div class="container">
+  <div class="row">
+    <h1>製品出荷カレンダー</h1>
+    <div class="shipment-make-first">
+      <%= link_to "新規出荷", new_users_shipment_path, class: "btn btn-success" %>
+    </div>
+    <div id='calendar'></div>
+  </div>
+</div>
+

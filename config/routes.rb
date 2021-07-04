@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :users, skip: :all
   devise_scope :user do
     get 'users/sign_in' => 'users/sessions#new', as: 'new_user_session'

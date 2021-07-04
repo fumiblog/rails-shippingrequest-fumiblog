@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="shipment-make border">
+        <h3>出荷依頼Head</h3>
+        <%= form_with model: @head, url: new_users_shipment_path, local: true do |f| %>
+          <div class="ship-date-make">
+            出荷日時：<%= f.date_field :ship_date, :size => "10" %>
+            着時間：<%= f.%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+ja:
+  enums:
+    user:
+      department:
+        honten: 本店営業部
+        kitakei: 北九京築営業部
+        kennan: 県南営業部
+        chikuho: 筑豊営業部
+        kitakyu: 北九州営業部
