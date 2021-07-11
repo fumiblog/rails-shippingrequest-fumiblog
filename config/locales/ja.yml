@@ -2,8 +2,16 @@ ja:
   enums:
     user:
       department:
-        honten: 本店営業部
-        kitakei: 北九京築営業部
-        kennan: 県南営業部
-        chikuho: 筑豊営業部
-        kitakyu: 北九州営業部
+        honten: "本店営業部"
+        kitakei: "北九京築営業部"
+        kennan: "県南営業部"
+        chikuho: "筑豊営業部"
+        kitakyu: "北九州営業部"
+    head:
+      vehicle:
+        h4t: "4t"
+        h5t: "5t"
+        h7t: "7t"
+        h10t: "10t"
+        h13t: "13t"
+        traler: "トレーラー"

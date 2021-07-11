@@ -74,3 +74,5 @@ gem 'fog' #画像アップロード
 gem 'meta-tags' #SEO対策
 gem 'google-analytics-rails' #Google Analytics
 gem 'google-api-client' #Google API
+gem 'rails-i18n'
+gem 'enum_help'
