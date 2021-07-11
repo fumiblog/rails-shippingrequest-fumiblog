@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="construction-make border">
+      <%= form_with model: @construction, url: users_constructions_path, local: true do |f| %>
+        <div class="form-group p-1">
+          <%= f.label "工事名" %><br />
+          <%= f.text_field :name, placeholder: "工事名", size: 40 %>
+          <%= f.text_field :order_no, placeholder: "order No", class: "m-1", size: 10 %>
+        </div>
+        <div class="form-group p-1">
+          <%= f.label "納入先" %><br />
+          <%= f.text_field :delivery_name, placeholder: "納入先", class: "m-1", size: 25 %>
+          <%= f.text_field :person, placeholder: "先方担当", class: "m-1", size: 7 %>
+          <%= f.text_field :tel, placeholder: "TEL", class: "m-1", size: 13  %><br />
+          <%= f.text_field :address, placeholder: "納入場所", class: "m-1", size: 53 %>
+        </div>
+        <%= f.submit "登録", class: "btn btn-success" %>
+      <% end %>
+    </div>
+    <div class="constructions-index">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>受注No</th>
+            <th>工事名</th>
+            <th>納入先</th>
+            <th>納入場所</th>
+            <th>先方担当</th>
+            <th>TEL</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @constructions.each do |construction| %>
+          <tr>
+            <td>
+              <%= construction.order_no %>
+            </td>
+            <td>
+              <%= construction.name %>
+            </td>
+            <td>
+              <%= construction.delivery_name %>
+            </td>
+            <td>
+              <%= construction.address %>
+            </td>
+            <td>
+              <%= construction.person %>
+            </td>
+            <td>
+              <%= construction.tel %>
+            </td>
+            <td>
+              <%= link_to "訂正", users_construction_path(construction), class: "btn btn-warning" %>
+            </td>
+            <td>
+              <%= link_to "削除", users_construction_path(construction), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

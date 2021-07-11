@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :users do
     get 'homes/top'
     resources :shipments
+    resources :constructions
   end
 
   root 'users/homes#top'
