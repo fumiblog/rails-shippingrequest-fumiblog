@@ -1,30 +1,116 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="shipment-make border">
-        <h3>出荷依頼Head</h3>
-        <%= form_with model: @head, url: new_users_shipment_path, local: true do |f| %>
-          <div class="ship-date-make m-1">
-            <p class="date p-1">
-              出荷日時：<%= f.date_field :ship_date, :size => "7" %>
-              着時間：<%= f.time_field :ship_date %>
-            </p>
-            <p class="vehicle p-1">
-              搬入車両：<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]} %>
-              ユニック要：<%= check_box_tag :unic %>
-              待機場所有：<%= check_box_tag :waiting_place %>
-            </p>
-            <p class="rain p-1">
-              降雨時の対応：<%= f.text_field :rain, :size => "35" %>
-            </p>
-            <p class="delivery">
-              
-            </p>
+
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/assets/kashiwagi_logo.png" alt="" width="52" height="37">
+      <h2>Shipping Request form</h2>
+      <p class="lead">製品出荷依頼書。分かりやすく入力して下さい。</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Constructions</span>
+          <span class="badge bg-secondary rounded-pill"><%= @constructions.count %></span>
+        </h4>
+        <ul class="list-group mb-3">
+          <div id='calendar'></div>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Second product</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$8</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Third item</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$5</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Promo code</h6>
+              <small>EXAMPLECODE</small>
+            </div>
+            <span class="text-success">−$5</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code">
+            <button type="submit" class="btn btn-secondary">Redeem</button>
           </div>
-        <% end %>
+        </form>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Shipping request</span>
+        </h4>
+
+
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+              <%= form_with model: @head, url: new_users_shipment_path, local: true do |f| %>
+                <div class="col-sm-4">
+                  <div class="form-label">出荷日</div>
+                  <%= f.date_field :ship_date, class: "form-control" %>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-label">出荷時間</div>
+                  <%= f.time_field :ship_date, class: "form-control" %>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-label">搬入車両</div>
+                  <select class="form-select" name=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]} %></select>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-label">ユニック要</div>
+                  <%= check_box_tag :unic, class: "text-center" %>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-label">待機場所有</div>
+                  <%= check_box_tag :waiting_place, class: "text-center" %>
+                </div>
+                <div class="col-12">
+                  <div class="form-label">降雨時の対応</div>
+                  <%= f.text_field :rain, class: "form-control" %>
+                </div>
+                <div class="col-12">
+                  <div class="form-label">納入先</div>
+                  <%= f.text_field :rain, class: "form-control" %>
+                </div>
+              <% end %>
+
+
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </form>
       </div>
     </div>
-    <div class="col-sm-5">
-    </div>
-  </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021 柏木興産</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="construction-make border">
-      <%= form_with model: @construction, url: edit_users_construction_path(@construction), local: true do |f| %>
+      <%= form_with model: @construction, url: users_construction_path(@construction), local: true do |f| %>
         <div class="form-group p-1">
           <%= f.label "工事名" %><br />
           <%= f.text_field :name, placeholder: "工事名", size: 40 %>

@@ -1,6 +1,7 @@
 class Users::ShipmentsController < ApplicationController
   def new
     @head = Head.new
+    @constructions = Construction.where(user_id: current_user.id)
   end
 
   def create
