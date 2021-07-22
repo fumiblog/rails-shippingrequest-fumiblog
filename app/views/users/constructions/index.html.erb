@@ -17,45 +17,58 @@
         <%= f.submit "登録", class: "btn btn-success" %>
       <% end %>
     </div>
-    <div class="constructions-index">
+    <div class="constructions-index table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>受注No</th>
-            <th>工事名</th>
-            <th>納入先</th>
-            <th>納入場所</th>
-            <th>先方担当</th>
-            <th>TEL</th>
-            <th></th>
-            <th></th>
+            <th scope="col" class="text-nowrap">受注No</th>
+            <th scope="col" class="text-nowrap">工事名</th>
+            <th scope="col" class="text-nowrap">商品</th>
+            <th scope="col" class="text-nowrap">納入先</th>
+            <th scope="col" class="text-nowrap">納入場所</th>
+            <th scope="col" class="text-nowrap">先方担当</th>
+            <th scope="col" class="text-nowrap">TEL</th>
+            <th scope="col" class="text-nowrap"></th>
+            <th scope="col" class="text-nowrap"></th>
           </tr>
         </thead>
         <tbody>
           <% @constructions.each do |construction| %>
           <tr>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= construction.order_no %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= construction.name %>
-            </td>
+            </td scope="col" class="text-nowrap">
+            <td>
+            <td scope="col" class="text-nowrap">
+              <div class="wrap">
+                <div class="open_h3 btn-1">
+                  <a href="">
+                    <span class="badge badge-pill badge-success">
+                      <%= @bodies.where(construction_id: construction.id).count %>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </td scope="col" class="text-nowrap">
             <td>
               <%= construction.delivery_name %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= construction.address %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= construction.person %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= construction.tel %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= link_to "訂正", edit_users_construction_path(construction), class: "btn btn-warning" %>
             </td>
-            <td>
+            <td scope="col" class="text-nowrap">
               <%= link_to "削除", users_construction_path(construction), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>

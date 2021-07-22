@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   
   namespace :users do
     get 'homes/top'
-    resources :shipments
+    resources :shipments do
+      collection do
+        post :confirm
+      end
+    end
     resources :constructions
   end
 

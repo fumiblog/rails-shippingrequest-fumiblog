@@ -1,6 +1,7 @@
 class Users::ConstructionsController < ApplicationController
   def index
     @constructions = Construction.where(user_id: current_user.id)
+    @bodies = Body.all
     @construction = Construction.new
     # byebug
   end
@@ -9,7 +10,7 @@ class Users::ConstructionsController < ApplicationController
     @construction = Construction.new(construction_params)
     @construction.user_id = current_user.id
     @construction.save!
-    redirect_to users_constructions_path
+    redirect_to new_users_shipment_path
   end
 
   def edit
@@ -19,7 +20,7 @@ class Users::ConstructionsController < ApplicationController
   def update
     @construction = Construction.find(params[:id])
     @construction.update(construction_params)
-    redirect_to users_constructions_path
+    redirect_to users_construction_path
   end
 
   def destroy
