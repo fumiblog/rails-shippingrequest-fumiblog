@@ -1,6 +1,5 @@
 class Head < ApplicationRecord
   belongs_to :user
-  has_many :bodies, dependent: :destroy
   belongs_to :construction
   enum vehicle: {
     h4t: 0,

@@ -19,8 +19,9 @@ class Users::ConstructionsController < ApplicationController
 
   def update
     @construction = Construction.find(params[:id])
-    @construction.update(construction_params)
-    redirect_to users_construction_path
+    @construction.user_id = current_user.id
+    @construction.update!(construction_params)
+    redirect_to users_constructions_path
   end
 
   def destroy

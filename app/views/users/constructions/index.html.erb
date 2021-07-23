@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="construction-make border">
+    <div class="construction-make col-sm-5 m-1 border">
       <%= form_with model: @construction, url: users_constructions_path, local: true do |f| %>
         <div class="form-group p-1">
           <%= f.label "工事名" %><br />
@@ -39,20 +39,19 @@
               <%= construction.order_no %>
             </td>
             <td scope="col" class="text-nowrap">
-              <%= construction.name %>
+              <%= link_to construction.name, users_bodies_path(:id => construction.id) %>
             </td scope="col" class="text-nowrap">
-            <td>
             <td scope="col" class="text-nowrap">
               <div class="wrap">
                 <div class="open_h3 btn-1">
                   <a href="">
-                    <span class="badge badge-pill badge-success">
+                    <span class="badge rounded-pill bg-success">
                       <%= @bodies.where(construction_id: construction.id).count %>
                     </span>
                   </a>
                 </div>
               </div>
-            </td scope="col" class="text-nowrap">
+            </td>
             <td>
               <%= construction.delivery_name %>
             </td>

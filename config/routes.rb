@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end
     end
     resources :constructions
+    resources :bodies
   end
 
   root 'users/homes#top'
