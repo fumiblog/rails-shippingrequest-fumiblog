@@ -1,7 +1,8 @@
 class Users::ShipmentsController < ApplicationController
   def new
     @head = Head.new
-    @constructions = Construction.where(user_id: current_user.id)
+    @construction = Construction.find(params[:id])
+    @bodies = Body.where(construction_id: params[:id])
   end
 
   def create

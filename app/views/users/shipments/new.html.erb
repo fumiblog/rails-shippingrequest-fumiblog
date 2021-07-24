@@ -3,58 +3,39 @@
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="/assets/kashiwagi_logo.png" alt="" width="52" height="37">
-      <h2>Shipping Request form</h2>
-      <p class="lead">製品出荷依頼書。分かりやすく入力して下さい。</p>
+        <h2><%= @construction.name %></h2>
+        <p class="lead bg-warning text-dark"><%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）</p>
+        <p class="lead">出荷内容を確定して下さい！</p>
     </div>
 
     <div class="row g-3">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted h3">Constructions</span>
-          <span class="badge bg-secondary rounded-pill"><%= @constructions.count %></span>
+          <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
         </h4>
         <ul class="list-group mb-3">
-          <div id='calendar'></div>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">−$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </form>
+          <%# <div id='calendar'></div> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                <th>商品名</th>
+                <th>注文数</th>
+                <th>送付数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @bodies.each do |body| %>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td class="text-secondary"><%= body.product_name %></td>
+                  <td class="text-end text-secondary"><%= body.quantity %></td>
+                  <td></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -65,14 +46,7 @@
         <form class="needs-validation" novalidate>
           <div class="row g-3">
               <%= form_with model: @head, url: new_users_shipment_path, local: true do |f| %>
-                <div class="col-10">
-                  <div class="form-label">現場</div>
-                  <select class="form-select" name="<%= f.collection_select :order_no, @constructions, :id, :full_address, prompt: "現場を選択して下さい！" %></select>
-                </div>
-                <div class="col-2">
-                  <div class="form-label">　</div>
-                  <%= link_to "新規現場", users_constructions_path, class: "btn btn-primary" %>
-                </div>
+               
                 <div class="col-sm-4">
                   <div class="form-label">出荷日</div>
                   <%= f.date_field :ship_date, class: "form-control" %>
