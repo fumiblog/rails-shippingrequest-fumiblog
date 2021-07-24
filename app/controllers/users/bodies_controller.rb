@@ -1,15 +1,17 @@
 class Users::BodiesController < ApplicationController
   def index
     # byebug
-    @construction = Construction.find(params[:id])
+    @construction = Construction.find(params[:construction_id])
     @body = Body.new
-    @bodies = Body.where(construction_id: params[:id])
+    @bodies = Body.where(construction_id: params[:construction_id])
   end
 
   def create
+    # byebug
     @body = Body.new(body_params)
+    # byebug
     @body.save!
-    redirect_to users_bodies_path
+    redirect_to users_constructions_path
   end
 
   def edit
@@ -25,7 +27,7 @@ class Users::BodiesController < ApplicationController
   def destroy
     @body = Body.find(params[:id])
     @body.destroy!
-    redirect_to users_bodies_path
+    redirect_to users_constructions_path
   end
 
   private

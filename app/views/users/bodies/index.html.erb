@@ -1,12 +1,83 @@
 <div class="container">
-  <div class="row">
-    <div class="body-make">
-      <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/assets/kashiwagi_logo.png" alt="" width="52" height="37">
-        <h2><%= @construction.name %></h2>
-        <p class="lead text-white-50 bg-dark"><%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）</p>
-        <p class="lead">納入製品を全て登録して下さい！</p>
+  <main>
+    <div class="row">
+      <div class="body-make">
+        <div class="py-5 text-center">
+          <img class="d-block mx-auto mb-4" src="/assets/kashiwagi_logo.png" alt="" width="52" height="37">
+          <h2><%= @construction.name %></h2>
+          <p class="lead text-white-50 bg-dark"><%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）</p>
+          <p class="lead">納入製品を全て登録して下さい！</p>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Product list</span>
+          <span class="badge bg-secondary rounded-pill"><%= @bodies.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>数量</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bodies.each do |body| %>
+              <tr>
+                <td><%= body.product_name %></td>
+                <td class="text-end"><%= body.quantity %></td>
+                <td><%= body.format %></td>
+                <td><%= link_to "削除", users_body_path(body), method: :delete, class: "btn btn-danger" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code">
+            <button type="submit" class="btn btn-secondary">Redeem</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Product Make</span>
+        </h4>
+
+        <%= form_with model: @body, url: users_bodies_path, local: true do |f| %>
+          <form>
+            <div class="row g-3">
+              <div class="col-9">
+                <div class="form-label">納品商品名（品名・サイズ）</div>
+                <%= f.text_field :product_name, class: "form-control" %>
+              </div>
+              <div class="col-1">
+                <div class="form-label">数量</div>
+                <%= f.text_field :quantity, class: "form-control" %>
+              </div>
+              <div class="col-2">
+                <div class="form-label">単位</div>
+                <%= f.select :format, Body.formats_i18n.keys.map { |k| [Body.formats_i18n[k], k]}, prompt: "単位は？", class: "form-select" %>
+              </div>
+              <%= f.hidden_field :construction_id, :value => @construction.id %>
+              <%= f.submit "登録", class: "btn btn-primary w-80 m-1" %>
+            </div>
+          </form>
+        <% end %>
+      </div>
+    </div>
+  </main>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021 柏木興産</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
 </div>

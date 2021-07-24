@@ -15,3 +15,10 @@ ja:
         h10t: "10t"
         h13t: "13t"
         traler: "トレーラー"
+    body:
+      format:
+        ke: "ケ"
+        ko: "個"
+        m: "ｍ"
+        ryubei: "m3"
+        ki: "基"

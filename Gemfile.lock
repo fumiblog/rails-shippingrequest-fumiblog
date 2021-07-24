@@ -497,9 +497,6 @@ GEM
     thor (1.1.0)
     tilt (2.0.10)
     trailblazer-option (0.1.1)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
@@ -539,7 +536,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   bootsnap (>= 1.4.4)
-  bootstrap
+  bootstrap (~> 5.0.0.alpha1)
   byebug
   capybara (>= 3.26)
   carrierwave
@@ -568,7 +565,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers

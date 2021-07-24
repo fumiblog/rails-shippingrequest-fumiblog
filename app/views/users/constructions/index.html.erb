@@ -39,18 +39,26 @@
               <%= construction.order_no %>
             </td>
             <td scope="col" class="text-nowrap">
-              <%= link_to construction.name, users_bodies_path(:id => construction.id) %>
+              <%= link_to construction.name, users_bodies_path(:construction_id => construction.id) %>
             </td scope="col" class="text-nowrap">
-            <td scope="col" class="text-nowrap">
-              <div class="wrap">
-                <div class="open_h3 btn-1">
-                  <a href="">
-                    <span class="badge rounded-pill bg-success">
-                      <%= @bodies.where(construction_id: construction.id).count %>
-                    </span>
-                  </a>
+            <td>
+
+              <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <%= @bodies.where(construction_id: construction.id).count %>
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <% @bodies.where(construction_id: construction.id).each do |body| %>
+                    <a href="#">
+                      <%= body.product_name %>（<%= body.quantity %>）
+                    </a>
+                  <% end %>
                 </div>
               </div>
+
+
             </td>
             <td>
               <%= construction.delivery_name %>
@@ -77,3 +85,13 @@
     </div>
   </div>
 </div>
+
+<%# <script>
+  /* 担当者Open */
+  $('.opne-1').hide();
+  $('.btn-1').click(function (){
+    $('.open-1').slideToggle('slow');
+    $(this).toggleClass('active');
+    alert(s);
+  });
+</script> %>
