@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_101656) do
+ActiveRecord::Schema.define(version: 2021_07_25_020820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_07_24_101656) do
     t.string "delivery_tel"
     t.string "delivery_address"
     t.integer "order_no"
-    t.string "construction_name"
     t.boolean "construction_metal"
     t.string "remark"
     t.datetime "created_at", precision: 6, null: false

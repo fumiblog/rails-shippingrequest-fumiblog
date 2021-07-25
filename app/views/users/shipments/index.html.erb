@@ -23,7 +23,19 @@
         <tbody>
           <% @heads.each do |head| %>
             <tr>
-              <tb></tb>
+              <td><%= head.ship_date %></td>
+              <td><%= head.ship_time %></td>
+              <td><%= head.unic %></td>
+              <td><%= head.waiting_place %></td>
+              <td><%= head.rain %></td>
+              <td><%= head.delivery %></td>
+              <td><%= head.delivery_person %></td>
+              <td><%= head.delivery_tel %></td>
+              <td><%= head.delivery_address %></td>
+              <td><%= head.order_no %></td>
+              <td><%= head.construction.name %></td>
+              <td><%= head.construction_metal %></td>
+              <td><%= head.remark %></td>
             </tr>
           <% end %>
         </tbody>

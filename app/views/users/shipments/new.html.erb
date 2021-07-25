@@ -28,10 +28,11 @@
             <tbody>
               <% @bodies.each do |body| %>
                 <tr>
-                  <td><input type="checkbox" /></td>
+                  <%# <td><input type="checkbox" /></td> %>
+                  <td><%= check_box_tag :id %></td>
                   <td class="text-secondary"><%= body.product_name %></td>
                   <td class="text-end text-secondary"><%= body.quantity %></td>
-                  <td></td>
+                  <td><input type="text" style="width:40px;"></td>
                 </tr>
               <% end %>
             </tbody>
@@ -45,48 +46,61 @@
 
         <form class="needs-validation" novalidate>
           <div class="row g-3">
-              <%= form_with model: @head, url: new_users_shipment_path, local: true do |f| %>
-               
-                <div class="col-sm-4">
-                  <div class="form-label">出荷日</div>
-                  <%= f.date_field :ship_date, class: "form-control" %>
-                </div>
-                <div class="col-sm-2">
-                  <div class="form-label">出荷時間</div>
-                  <%= f.time_field :ship_date, class: "form-control" %>
-                </div>
-                <div class="col-sm-2">
-                  <div class="form-label">搬入車両</div>
-                  <select class="form-select" name=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %></select>
-                </div>
-                <div class="col-sm-2">
-                  <div class="form-label">ユニック要</div>
-                  <%= check_box_tag :unic, class: "text-center" %>
-                </div>
-                <div class="col-sm-2">
-                  <div class="form-label">待機場所有</div>
-                  <%= check_box_tag :waiting_place, class: "text-center" %>
-                </div>
-                <div class="col-12">
-                  <div class="form-label">降雨時の対応</div>
-                  <%= f.text_field :rain, class: "form-control" %>
-                </div>
-                <div class="col-12">
-                  <div class="form-label">納入先</div>
-                  <%= f.text_field :rain, class: "form-control" %>
-                </div>
-                <div class="col-8">
-                  <div class="form-label">工事名</div>
-                  <%=  %>
-                </div>
-
-              <% end %>
-
-
-
-          <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+            <%= form_with model: @head, url: confirm_users_shipments_path, local: true do |f| %>
+              
+              <div class="col-sm-4">
+                <div class="form-label">出荷日</div>
+                <%= f.date_field :ship_date, class: "form-control" %>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-label">出荷時間</div>
+                <%= f.time_field :ship_date, class: "form-control" %>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-label">搬入車両</div>
+                <select class="form-select" name=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %></select>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-label">ユニック要</div>
+                <%= check_box_tag :unic, class: "text-center" %>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-label">待機場所有</div>
+                <%= check_box_tag :waiting_place, class: "text-center" %>
+              </div>
+              <div class="col-12">
+                <div class="form-label">降雨時の対応</div>
+                <%= f.text_field :rain, class: "form-control" %>
+              </div>
+              
+              <div>
+                <%= radio_button_tag :flag, 0 %>登録住所<br />
+              </div>
+              <div class="col-sm-12">
+                <%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）
+              </div>
+              <div>
+                <%= radio_button_tag :flag, 1 %>新しいお届け先<br />
+              </div>
+              <div class="col-sm-7">
+                <div class="form-label">納入会社</div>
+                <%= f.text_field :delivery, class: "form-control" %>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-label">担当者</div>
+                <%= f.text_field :delivery_person, class: "form-control" %>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-label">TEL</div>
+                <%= f.text_field :delivery_tel, class: "form-control" %>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-label">納入住所</div>
+                <%= f.text_field :delivery_address, class: "form-control" %>
+              </div>
+              <%= f.submit "内容を確認する", class: "w-100 btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
         </form>
       </div>
     </div>
