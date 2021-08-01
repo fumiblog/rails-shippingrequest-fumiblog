@@ -49,17 +49,16 @@
             <%= form_with model: @head, url: users_shipments_path, local: true do |f| %>
               
               <div class="col-sm-4">
-                <div class="form-label">出荷日</div>
-                <%= f.date_field :ship_date %>
-              </div>
+                <div>出荷日</div>
+                <%= f.date_field :ship_date, class: "form-control" %>
               <div class="col-sm-2">
                 <div class="form-label">出荷時間</div>
-                <%= f.time_field :ship_date, class: "form-control" %>
+                <%#= f.time_field :ship_date, class: "form-control" %>
               </div>
               <div class="col-sm-2">
                 <div class="form-label">搬入車両</div>
                 <%# <select class="form-select" name="<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %>
-                <%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %>
+                <%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?", class: "form-control" %>
               </div>
               <div class="col-sm-2">
                 <div class="form-label">ユニック要</div>

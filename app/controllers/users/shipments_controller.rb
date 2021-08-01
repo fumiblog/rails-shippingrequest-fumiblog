@@ -9,6 +9,7 @@ class Users::ShipmentsController < ApplicationController
 
   def create
     @head = Head.new(head_params)
+    @head.created_date = Date.today
     # byebug
     @construction = Construction.find(params[:head][:construction_id])
     # byebug
