@@ -44,13 +44,13 @@
         </h4>
 
 
-        <form class="needs-validation" novalidate>
+        <div class="needs-validation" novalidate>
           <div class="row g-3">
-            <%= form_with model: @head, url: confirm_users_shipments_path, local: true do |f| %>
+            <%= form_with model: @head, url: users_shipments_path, local: true do |f| %>
               
               <div class="col-sm-4">
                 <div class="form-label">出荷日</div>
-                <%= f.date_field :ship_date, class: "form-control" %>
+                <%= f.date_field :ship_date %>
               </div>
               <div class="col-sm-2">
                 <div class="form-label">出荷時間</div>
@@ -58,15 +58,16 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-label">搬入車両</div>
-                <select class="form-select" name=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %></select>
+                <%# <select class="form-select" name="<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %>
+                <%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?" %>
               </div>
               <div class="col-sm-2">
                 <div class="form-label">ユニック要</div>
-                <%= check_box_tag :unic, class: "text-center" %>
+                <%= f.check_box :unic %>
               </div>
               <div class="col-sm-2">
                 <div class="form-label">待機場所有</div>
-                <%= check_box_tag :waiting_place, class: "text-center" %>
+                <%= f.check_box :waiting_place %>
               </div>
               <div class="col-12">
                 <div class="form-label">降雨時の対応</div>
@@ -98,10 +99,11 @@
                 <div class="form-label">納入住所</div>
                 <%= f.text_field :delivery_address, class: "form-control" %>
               </div>
-              <%= f.submit "内容を確認する", class: "w-100 btn btn-primary btn-lg" %>
+              <%= f.hidden_field :construction_id, :value => @construction.id %>
+              <%= f.submit "登録する", class: "w-100 btn btn-primary btn-lg" %>
             <% end %>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </main>
