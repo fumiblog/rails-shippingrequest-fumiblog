@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   namespace :users do
     get 'homes/top'
+    get 'homes/index'
     resources :shipments do
       collection do
         post :confirm
@@ -21,5 +22,5 @@ Rails.application.routes.draw do
     resources :bodies
   end
 
-  root 'users/homes#top'
+  root 'users/homes#index'
 end
