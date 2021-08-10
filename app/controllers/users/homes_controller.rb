@@ -3,6 +3,8 @@ class Users::HomesController < ApplicationController
   end
 
   def index
+    @heads = Head.all
+    # byebug
   end
   
 end

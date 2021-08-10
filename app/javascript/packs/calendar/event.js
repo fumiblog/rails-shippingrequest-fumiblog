@@ -15,6 +15,15 @@ document.addEventListener('turbolinks:load', function () {
   var calendar = new Calendar(calendarEl, {
     plugins: [monthGridPlugin, interactionPlugin, googleCalendarApi],
 
+    // events: "/homes.json",
+
+    events: [
+      {
+        title: 'event1',
+        start: '2021-08-12'
+      }
+    ],
+
 
     //細かな表示設定
     locale: 'ja',
@@ -26,6 +35,7 @@ document.addEventListener('turbolinks:load', function () {
       end: 'dayGridMonth'
       // end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
+
     expandRows: true,
     stickyHeaderDates: true,
     buttonText: {
@@ -33,6 +43,7 @@ document.addEventListener('turbolinks:load', function () {
     },
     allDayText: '終日',
     height: "auto",
+
 
     dateClick: function (info) {
       //日付をクリックしたときのイベント(詳しくは次回の記事へ)
@@ -49,3 +60,4 @@ document.addEventListener('turbolinks:load', function () {
   calendar.render();
 
 });
+
