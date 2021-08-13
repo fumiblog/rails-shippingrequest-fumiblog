@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     resources :bodies
   end
 
+  
+
   root 'users/homes#index'
 end

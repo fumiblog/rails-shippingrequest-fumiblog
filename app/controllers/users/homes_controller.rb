@@ -4,7 +4,6 @@ class Users::HomesController < ApplicationController
 
   def index
     @heads = Head.all
-    # byebug
   end
   
 end

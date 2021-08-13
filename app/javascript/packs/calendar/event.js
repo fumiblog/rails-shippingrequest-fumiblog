@@ -15,14 +15,15 @@ document.addEventListener('turbolinks:load', function () {
   var calendar = new Calendar(calendarEl, {
     plugins: [monthGridPlugin, interactionPlugin, googleCalendarApi],
 
-    // events: "/homes.json",
+    events: "/users/homes/index.json",
 
-    events: [
-      {
-        title: 'event1',
-        start: '2021-08-12'
-      }
-    ],
+    // events: [
+    //   {
+    //     title: 'event1',
+    //     start: '2021-08-12'
+    //   }
+    // ],
+
 
 
     //細かな表示設定
@@ -60,4 +61,3 @@ document.addEventListener('turbolinks:load', function () {
   calendar.render();
 
 });
-
