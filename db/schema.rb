@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_25_020820) do
+ActiveRecord::Schema.define(version: 2021_08_15_060812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_07_25_020820) do
 
   create_table "heads", force: :cascade do |t|
     t.date "created_date"
-    t.date "ship_date"
     t.integer "arrival_time"
     t.integer "vehicle"
     t.boolean "unic"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_020820) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "construction_id"
+    t.datetime "ship_date"
   end
 
   create_table "shippeds", force: :cascade do |t|

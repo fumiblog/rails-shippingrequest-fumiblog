@@ -3,9 +3,9 @@ import { Calendar } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid'
 import googleCalendarApi from '@fullcalendar/google-calendar'
-// import timeGridWeekPlugin from '@fullcalendar/daygrid'
-// import timeGridDayPlugin from '@fullcalendar/daygrid'
-// import listMonthlugin from '@fullcalendar/daygrid'
+import timeGridWeekPlugin from '@fullcalendar/timegrid'
+import timeGridDayPlugin from '@fullcalendar/timegrid'
+// import listPlugin from '@fullcalendar/list'
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
 document.addEventListener('turbolinks:load', function () {
@@ -13,7 +13,7 @@ document.addEventListener('turbolinks:load', function () {
 
   //カレンダーの中身を設定(月表示とか、クリックアクション起こしたいとか、googleCalendar使うととか)
   var calendar = new Calendar(calendarEl, {
-    plugins: [monthGridPlugin, interactionPlugin, googleCalendarApi],
+    plugins: [monthGridPlugin, interactionPlugin, googleCalendarApi, timeGridWeekPlugin, timeGridDayPlugin],
 
     events: "/users/homes/index.json",
 
@@ -33,8 +33,8 @@ document.addEventListener('turbolinks:load', function () {
     headerToolbar: {
       start: 'prev,next today',
       center: 'title',
-      end: 'dayGridMonth'
-      // end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      end: 'dayGridMonth, timeGridWeek, timeGridDay'
+      // end: 'dayGridMonth,timeGridWeek,timeGridDay,list'
     },
 
     expandRows: true,

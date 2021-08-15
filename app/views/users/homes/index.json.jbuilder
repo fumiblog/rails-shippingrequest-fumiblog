@@ -5,7 +5,7 @@
 
 json.array! @heads do |head|
   json.id head.id
-  json.title head.delivery
+  json.title "(" + head.user.name + ")" + head.delivery + " 納品"
   json.start head.ship_date
 end
 

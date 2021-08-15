@@ -22,11 +22,11 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if admin_signed_in? %>
-                <li><a href="<%#= admins_genres_path %>" class="dropdown-item">Genre</a></li>
+                <li><a href="<%= users_shipments_path %>" class="dropdown-item">shipmentList</a></li>
                 <li><a href="<%#= admins_categories_path %>" class="dropdown-item">Category</a></li>
                 <li><a href="<%#= admins_details_path %>" class="dropdown-item">Detail</a></li>
               <% elsif user_signed_in? %>
-                <li><a href="<%#= users_categories_path %>" class="dropdown-item">Category</a></li>
+                <li><a href="<%= users_shipments_path %>" class="dropdown-item">shipmentList</a></li>
                 <li><a href="<%#= users_details_path %>" class="dropdown-item">Detail</a></li>
               <% else %>
               <% end %>
