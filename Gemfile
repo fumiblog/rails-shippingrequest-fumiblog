@@ -77,3 +77,4 @@ gem 'google-api-client' #Google API
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'pry-byebug'
+gem 'uglifier', '~> 2.7'
