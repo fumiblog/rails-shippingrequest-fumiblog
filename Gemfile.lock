@@ -502,9 +502,8 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
@@ -572,7 +571,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   tzinfo-data
-  uglifier (~> 2.7)
+  uglifier (~> 4.2)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
