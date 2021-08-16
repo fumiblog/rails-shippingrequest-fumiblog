@@ -40,7 +40,10 @@ document.addEventListener('turbolinks:load', function () {
     expandRows: true,
     stickyHeaderDates: true,
     buttonText: {
-      today: '今日'
+      today: '今日',
+      month: '月',
+      week: '週',
+      day: '日'
     },
     allDayText: '終日',
     height: "auto",
