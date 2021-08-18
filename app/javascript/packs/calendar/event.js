@@ -38,6 +38,7 @@ document.addEventListener('turbolinks:load', function () {
     },
 
     expandRows: true,
+    navLinks: true,
     stickyHeaderDates: true,
     buttonText: {
       today: '今日',
@@ -51,7 +52,7 @@ document.addEventListener('turbolinks:load', function () {
 
     dateClick: function (info) {
       //日付をクリックしたときのイベント(詳しくは次回の記事へ)
-      alert('日付です');
+      // alert('日付です');
     },
     eventClick: function (info) {
       //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
