@@ -4,7 +4,7 @@ class Users::HomesController < ApplicationController
 
   def index
     @heads = Head.all
-    gon.user_name = current_user.name
+    
   end
   
 end
