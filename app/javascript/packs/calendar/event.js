@@ -56,7 +56,7 @@ document.addEventListener('turbolinks:load', function () {
     },
     eventClick: function (info) {
       //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
-      // arert('gon.user_name');
+      alert(gon.user_name + 'さんのスケジュールです。');
     },
     eventClassNames: function (arg) {
       //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
