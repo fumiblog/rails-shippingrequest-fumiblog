@@ -14,6 +14,7 @@ document.addEventListener('turbolinks:load', function () {
   //カレンダーの中身を設定(月表示とか、クリックアクション起こしたいとか、googleCalendar使うととか)
   var calendar = new Calendar(calendarEl, {
     plugins: [monthGridPlugin, interactionPlugin, googleCalendarPlugin, timeGridWeekPlugin, timeGridDayPlugin],
+    // initialView: 'listMonth',
     googleCalendarApiKey: 'AIzaSyBFC7aes19eGHNXbM0BtXZkx7s2REUQ4S0',
 
 
@@ -44,7 +45,7 @@ document.addEventListener('turbolinks:load', function () {
     headerToolbar: {
       start: 'prev,next today',
       center: 'title',
-      end: 'dayGridMonth, timeGridWeek, timeGridDay'
+      end: 'dayGridMonth timeGridWeek timeGridDay'
       // end: 'dayGridMonth,timeGridWeek,timeGridDay,list'
     },
 
@@ -54,15 +55,15 @@ document.addEventListener('turbolinks:load', function () {
     selectable: true,
     // businessHours: true,
     businessHours: {
-      daysOfWeek: [1, 2, 3, 4, 5, 6],
-      day: ['2021-09-11']
+      daysOfWeek: [1, 2, 3, 4, 5],
+      days: ['2021-09-04']
     },
     stickyHeaderDates: true,
     buttonText: {
       today: '今日',
       month: '月',
       week: '週',
-      day: '日'
+      day: '日',
     },
     allDayText: '終日',
     height: "auto",
