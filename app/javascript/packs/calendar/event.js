@@ -17,10 +17,15 @@ document.addEventListener('turbolinks:load', function () {
     googleCalendarApiKey: 'AIzaSyBFC7aes19eGHNXbM0BtXZkx7s2REUQ4S0',
 
 
-    events: {
-      googleCalendarId: 'g-calendar@group.calendar.google.com',
-      className: 'gcal-event'
-    },
+    eventSources: [
+      {
+        googleCalendarId: 'ja.japanese#holiday@group.v.calendar.google.com',
+        className: 'event_holiday'
+      },
+      {
+        googleCalendarId: 'g-calendar@group.calendar.google.com',
+      }],
+
     events: "/users/homes/index.json",
 
     // events: [
@@ -47,6 +52,11 @@ document.addEventListener('turbolinks:load', function () {
     navLinks: true,
     weekends: true,
     selectable: true,
+    // businessHours: true,
+    businessHours: {
+      daysOfWeek: [1, 2, 3, 4, 5, 6],
+      day: ['2021-09-11']
+    },
     stickyHeaderDates: true,
     buttonText: {
       today: '今日',
@@ -69,7 +79,7 @@ document.addEventListener('turbolinks:load', function () {
     },
     eventClassNames: function (arg) {
       //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
-    }
+    },
 
   });
   //カレンダー表示
