@@ -1,8 +1,8 @@
 //インストールしたファイルたちを呼び出します。
-import { Calendar } from '@fullcalendar/core';
+import { Calendar, groupIntersectingEntries } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid'
-import googleCalendarApi from '@fullcalendar/google-calendar'
+import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import timeGridWeekPlugin from '@fullcalendar/timegrid'
 import timeGridDayPlugin from '@fullcalendar/timegrid'
 // import listPlugin from '@fullcalendar/list'
@@ -13,8 +13,14 @@ document.addEventListener('turbolinks:load', function () {
 
   //カレンダーの中身を設定(月表示とか、クリックアクション起こしたいとか、googleCalendar使うととか)
   var calendar = new Calendar(calendarEl, {
-    plugins: [monthGridPlugin, interactionPlugin, googleCalendarApi, timeGridWeekPlugin, timeGridDayPlugin],
+    plugins: [monthGridPlugin, interactionPlugin, googleCalendarPlugin, timeGridWeekPlugin, timeGridDayPlugin],
+    googleCalendarApiKey: 'AIzaSyBFC7aes19eGHNXbM0BtXZkx7s2REUQ4S0',
 
+
+    events: {
+      googleCalendarId: 'g-calendar@group.calendar.google.com',
+      className: 'gcal-event'
+    },
     events: "/users/homes/index.json",
 
     // events: [
@@ -39,6 +45,8 @@ document.addEventListener('turbolinks:load', function () {
 
     expandRows: true,
     navLinks: true,
+    weekends: true,
+    selectable: true,
     stickyHeaderDates: true,
     buttonText: {
       today: '今日',
@@ -57,6 +65,7 @@ document.addEventListener('turbolinks:load', function () {
     eventClick: function (info) {
       //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
       alert(gon.user_name + 'さんのスケジュールです。');
+      // alert(/users/homes / index.json);
     },
     eventClassNames: function (arg) {
       //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
