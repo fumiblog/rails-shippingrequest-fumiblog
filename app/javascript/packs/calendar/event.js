@@ -53,6 +53,11 @@ document.addEventListener('turbolinks:load', function () {
     navLinks: true,
     weekends: true,
     selectable: true,
+    // eventLimit: true,
+    // editable: true,
+    // slotEventOverlap: true,
+    // selectable: true,
+    // selectHelper: true,
     // businessHours: true,
     businessHours: {
       daysOfWeek: [1, 2, 3, 4, 5],
@@ -75,8 +80,10 @@ document.addEventListener('turbolinks:load', function () {
     },
     eventClick: function (info) {
       //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
-      alert(gon.user_name + 'さんのスケジュールです。');
-      // alert(/users/homes / index.json);
+      // alert(gon.user_name + 'さんのスケジュールです。');
+
+      // alert(calendar.getEventById());
+      alert(calendar.getEvents());
     },
     eventClassNames: function (arg) {
       //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
