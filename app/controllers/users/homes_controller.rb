@@ -5,6 +5,7 @@ class Users::HomesController < ApplicationController
   def index
     @heads = Head.all
     if user_signed_in?
+      # gon.user_name = Head.where(ship_date: cure)
       gon.user_name = current_user.name
     end
     # byebug
