@@ -5,7 +5,7 @@ import monthGridPlugin from '@fullcalendar/daygrid'
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import timeGridWeekPlugin from '@fullcalendar/timegrid'
 import timeGridDayPlugin from '@fullcalendar/timegrid'
-// import listPlugin from '@fullcalendar/list'
+// import listGridMonthPlugin from '@fullcalendar/listgrid'
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
 document.addEventListener('turbolinks:load', function () {
