@@ -8,6 +8,26 @@
     <div class="m-2" id='calendar'></div>
     <%= javascript_pack_tag 'calendar/event' %>
   </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>担当</th>
+          <th>時間</th>
+          <th>現場</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @day_heads.each do |day_data| %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= day_data.construction.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script>

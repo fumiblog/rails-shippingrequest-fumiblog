@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function () {
     timeZone: 'Asia/Tokyo',
     firstDay: 1,
     headerToolbar: {
-      start: 'prev,next today',
+      start: 'prev,next',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
       // right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth,custom'
@@ -52,6 +52,7 @@ document.addEventListener('turbolinks:load', function () {
 
     expandRows: true,
     navLinks: true,
+    // editable: true,
     weekends: true,
     selectable: true,
     // eventLimit: true,
@@ -84,12 +85,11 @@ document.addEventListener('turbolinks:load', function () {
       // alert(gon.user_name + 'さんのスケジュールです。');
 
       // alert(calendar.getEventById());
-      alert(calendar.getEvents());
+      alert(calendar.getEventById());
     },
     eventClassNames: function (arg) {
       //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
-    },
-
+    }
   });
   //カレンダー表示
   calendar.render();
