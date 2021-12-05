@@ -3,7 +3,10 @@
     <h2>出荷カレンダー</h2>
     <p class="h3 text-end bg-dark text-white " id="RealtimeClockArea2"></p>
     <div class="shipment-make-first">
-      <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
+      <% if user_signed_in? %>
+        <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
+      <% else %>
+      <% end %>
     </div>
     <div class="m-2" id='calendar'></div>
     <%= javascript_pack_tag 'calendar/event' %>
@@ -21,7 +24,7 @@
         <% @day_heads.each do |day_data| %>
           <tr>
             <td><%= day_data.user.name %></td>
-            <td><%= day_data.ship_date.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+            <td><%= day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分") %></td>
             <td><%= day_data.construction.name %></td>
           </tr>
         <% end %>

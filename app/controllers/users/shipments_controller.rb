@@ -23,7 +23,7 @@ class Users::ShipmentsController < ApplicationController
     @head.user_id = current_user.id
     # byebug
     @head.save!
-    redirect_to users_shipments_path
+    redirect_to root_path
   end
 
   def index
