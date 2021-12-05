@@ -20,8 +20,8 @@
       <tbody>
         <% @day_heads.each do |day_data| %>
           <tr>
-            <td></td>
-            <td></td>
+            <td><%= day_data.user.name %></td>
+            <td><%= day_data.ship_date.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
             <td><%= day_data.construction.name %></td>
           </tr>
         <% end %>
