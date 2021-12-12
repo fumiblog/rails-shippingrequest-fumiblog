@@ -47,21 +47,19 @@
         <div class="needs-validation" novalidate>
           <%= form_with model: @head, url: users_shipments_path, local: true do |f| %>
             <div class="row g-3">
-              <div class="col-lg-3">
+              <div class="col-5">
                 <div class="form-label">出荷日</div>
                 <%= f.datetime_field :ship_date, class: "form-control" %>
+              </div>
               <div class="col-3">
                 <div class="form-label">搬入車両</div>
-                <select class="form-select" aria-label="Default select example" value=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]} %>>
-
-                <%#= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]}, prompt: "車両t数?", class: "form-select" %>
-
+                <select class="form-select" aria-label="Default select example" value=<%= f.select :vehicle, Head.vehicles_i18n.keys.map { |k| [Head.vehicles_i18n[k], k]} %>
               </div>
-              <div class="col-lg-3">
+              <div class="col-2">
                 <div class="form-label">ユニック要</div>
                 <%= f.check_box :unic, class: "form-check-input" %>
               </div>
-              <div class="col-lg-3">
+              <div class="col-2">
                 <div class="form-label">待機場所有</div>
                 <%= f.check_box :waiting_place, class: "form-check-input"  %>
               </div>
