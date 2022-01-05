@@ -1,14 +1,19 @@
 class Users::ShipmentsController < ApplicationController
   def new
     @head = Head.new
-    # @shipped = Shipped.new
-    # byebug
+    # @form = Form::ProductCollection.new
     @construction = Construction.find(params[:id])
     @bodies = Body.where(construction_id: params[:id])
   end
 
   def create
     @head = Head.new(head_params)
+    # @form = Form::ProductCollection.new(product_collection_params)
+    #   if @form.save
+    #     redirect_to :products, notice: "#{@form.target_products.size}件の商品を登録しました。"
+    #   else
+    #     render :new
+    #   end
     @head.created_date = Date.today
     # byebug
     @construction = Construction.find(params[:head][:construction_id])
@@ -23,6 +28,7 @@ class Users::ShipmentsController < ApplicationController
     @head.user_id = current_user.id
     # byebug
     @head.save!
+    # @shipped.save!
     redirect_to root_path
   end
 
@@ -56,5 +62,10 @@ class Users::ShipmentsController < ApplicationController
       :remark,
       :user_id
     )
+  end
+  def product_collection_params
+    params
+      .require(:form_product_collection)
+      .permit(products_attributes: Form::Product::REGISTRABLE_ATTRIBUTES)
   end
 end

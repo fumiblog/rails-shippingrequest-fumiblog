@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
     resources :constructions
     resources :bodies
+    # resources :shippeds
   end
 
   

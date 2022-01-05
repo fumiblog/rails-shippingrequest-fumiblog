@@ -11,7 +11,7 @@
     <div class="row g-3">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted h3">Constructions</span>
+          <span class="text-muted h3"> Products</span>
           <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
         </h4>
         <ul class="list-group mb-3">
@@ -26,15 +26,17 @@
               </tr>
             </thead>
             <tbody>
-              <% @bodies.each do |body| %>
-                <tr>
-                  <%# <td><input type="checkbox" /></td> %>
-                  <td><%= check_box_tag :id %></td>
-                  <td class="text-secondary"><%= body.product_name %></td>
-                  <td class="text-end text-secondary"><%= body.quantity %></td>
-                  <td><input type="text" style="width:40px;"></td>
-                </tr>
-              <% end %>
+              <%#= form_with model: @shipped, url: users_shippeds_path, local: true do |s| %>
+                <% @bodies.each do |body| %>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><%#= s.check_box body.id</td> %>
+                    <td class="text-secondary"><%= body.product_name %></td>
+                    <td class="text-end text-secondary"><%= body.quantity %></td>
+                    <td><%#= s.text_field :quantity, :size => "3" %></td>
+                    <td><input type="text" style="width:40px;"></td>
+                  </tr>
+                <% end %>
             </tbody>
           </table>
       </div>
@@ -104,6 +106,7 @@
               <%= f.hidden_field :construction_id, :value => @construction.id %>
               <%= f.submit "登録する", class: "w-100 btn btn-primary btn-lg" %>
             </div>
+              <%# end %>
           <% end %>
         </div>
       </div>
