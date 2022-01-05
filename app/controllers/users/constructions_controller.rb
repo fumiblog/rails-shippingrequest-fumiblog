@@ -39,7 +39,8 @@ class Users::ConstructionsController < ApplicationController
       :address,
       :person,
       :tel,
-      :user_id
+      :user_id,
+      :remark
     )
   end
 end
