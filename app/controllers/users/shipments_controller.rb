@@ -4,6 +4,8 @@ class Users::ShipmentsController < ApplicationController
     # @form = Form::ProductCollection.new
     @construction = Construction.find(params[:id])
     @bodies = Body.where(construction_id: params[:id])
+    @heads = Head.where(construction_id: params[:id])
+    # byebug
   end
 
   def create

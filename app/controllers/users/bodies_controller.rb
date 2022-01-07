@@ -27,7 +27,7 @@ class Users::BodiesController < ApplicationController
 
   def destroy
     @body = Body.find(params[:id])
-    @body.destroy!
+    @body.destroy
     redirect_to request.referer
   end
 

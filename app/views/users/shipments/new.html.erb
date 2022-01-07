@@ -19,7 +19,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th data-field="state" data-checkbox="true"></th>
+                <th>出荷</th>
                 <th>商品名</th>
                 <th>注文数</th>
                 <th>送付数</th>
@@ -30,15 +30,28 @@
                 <% @bodies.each do |body| %>
                   <tr>
                     <td><input type="checkbox" /></td>
-                    <td><%#= s.check_box body.id</td> %>
                     <td class="text-secondary"><%= body.product_name %></td>
                     <td class="text-end text-secondary"><%= body.quantity %></td>
-                    <td><%#= s.text_field :quantity, :size => "3" %></td>
                     <td><input type="text" style="width:40px;"></td>
                   </tr>
                 <% end %>
             </tbody>
           </table>
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">  Shipping List</span>
+          <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <tbody>
+              <% @heads.each do |head| %>
+                <tr>
+                  <td class="text-secondary"><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
+                  <td class="text-secondary"><%= head.delivery_person %>さん</td>
+                  <td class="text-secondary"><%= head.delivery_address %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
