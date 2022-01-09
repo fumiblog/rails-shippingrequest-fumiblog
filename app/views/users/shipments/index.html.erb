@@ -24,7 +24,7 @@
         <tbody>
           <% @heads.each do |head| %>
             <tr>
-              <td><%= head.ship_date %></td>
+              <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
               <td><%#= head.ship_time %></td>
               <td><%= head.vehicle %></td>
               <td><%= head.unic %></td>

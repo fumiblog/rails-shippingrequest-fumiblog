@@ -35,7 +35,13 @@ class Users::ShipmentsController < ApplicationController
   end
 
   def index
-    @heads = Head.all
+    # byebug
+    if params[:construction_id] == nil
+      @heads = Head.all.order(ship_date: "DESC")
+    else
+      @heads = Head.where(construction_id: params[:construction_id])
+    end
+    # byebug
   end
 
   def destroy

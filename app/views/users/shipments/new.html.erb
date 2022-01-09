@@ -43,13 +43,13 @@
         </h4>
         <table class="table table-striped">
           <tbody>
-              <% @heads.each do |head| %>
-                <tr>
-                  <td class="text-secondary"><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
-                  <td class="text-secondary"><%= head.delivery_person %>さん</td>
-                  <td class="text-secondary"><%= head.delivery_address %></td>
-                </tr>
-              <% end %>
+            <% @heads.each do |head| %>
+              <tr>
+                <td class="text-secondary"><%= link_to head.ship_date.strftime('%y-%m-%d %H:%M'), users_shipments_path(:construction_id => head.construction_id) %></td>
+                <td class="text-secondary"><%= head.delivery_person %>さん</td>
+                <td class="text-secondary"><%= head.delivery_address %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
