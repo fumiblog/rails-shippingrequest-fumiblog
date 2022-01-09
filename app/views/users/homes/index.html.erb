@@ -5,6 +5,7 @@
     <div class="shipment-make-first">
       <% if user_signed_in? %>
         <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
+        <%= link_to "見積", users_companies_path, class: "btn btn-warning" %>
       <% else %>
       <% end %>
     </div>

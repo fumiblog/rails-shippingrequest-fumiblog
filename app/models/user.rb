@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :heads, dependent: :destroy
   has_many :constructions, dependent: :destroy
+  has_many :companies, dependent: :destroy
 
   enum department: {
     honten: 0,

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="make-company m-2 p-2">
+    <h4>Company Make!</h4>
+    <%= form_with model:@company, url: users_companies_path(@company), local: true do |f| %>
+      <div class="row p-2">
+        <div class="col-sm-3">
+          <%= f.text_field :name, class: "form-control", placeholder: "Company name" %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.text_field :post_code, class: "form-control", placeholder: "〒" %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-sm-3">
+          <%= f.text_field :tel, class: "form-control", placeholder: "Telephone" %>
+        </div>
+        <div class="col-sm-3">
+          <%= f.text_field :fax, class: "form-control", placeholder: "Fax Number" %>
+        </div>
+        <div class="col-sm-6">
+          <%= f.text_field :ceo, class: "form-control", placeholder: "社長名" %>
+        </div>
+      </div>
+      <%= f.submit "登録", class: "btn btn-success m-2" %>
+    <% end %>
+  </div>
+  <div class="company-list m-2 p-2">
+    <h4>Company List!</h4>
+    <div class="card" style="width: 18rem;">
+      <% @companies.each do |company| %>
+        <div class="card-body">
+          <h5 class="card-title"><%= company.name %>　<%= company.ceo %>社長</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %></h6>
+          <p class="card-text"><%= company.persons.name %></p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

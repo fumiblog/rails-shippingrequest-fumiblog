@@ -4,7 +4,7 @@ class Users::ShipmentsController < ApplicationController
     # @form = Form::ProductCollection.new
     @construction = Construction.find(params[:id])
     @bodies = Body.where(construction_id: params[:id])
-    @heads = Head.where(construction_id: params[:id])
+    @heads = Head.where(construction_id: params[:id]).order(ship_date: "DESC")
     # byebug
   end
 
@@ -37,7 +37,7 @@ class Users::ShipmentsController < ApplicationController
   def index
     # byebug
     if params[:construction_id] == nil
-      @heads = Head.all.order(ship_date: "DESC")
+      @heads = Head.all
     else
       @heads = Head.where(construction_id: params[:construction_id])
     end

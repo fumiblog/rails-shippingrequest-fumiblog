@@ -5,7 +5,6 @@
         <thead>
           <tr>
             <th>出荷日時</th>
-            <th>着時間</th>
             <th>搬入車両</th>
             <th>ユニック</th>
             <th>待機場所</th>
@@ -22,10 +21,9 @@
           </tr>
         </thead>
         <tbody>
-          <% @heads.each do |head| %>
+          <% @heads.order(ship_date: "DESC").each do |head| %>
             <tr>
               <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
-              <td><%#= head.ship_time %></td>
               <td><%= head.vehicle %></td>
               <td><%= head.unic %></td>
               <td><%= head.waiting_place %></td>
