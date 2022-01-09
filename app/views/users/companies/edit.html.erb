@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="make-company m-2 p-2">
+    <h4>Company Make!</h4>
+    <%= form_with model:@company, url: users_company_path(@company), local: true do |f| %>
+      <div class="row p-2">
+        <div class="col-sm-3">
+          <%= f.text_field :name, class: "form-control", placeholder: "Company name" %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.text_field :post_code, class: "form-control", placeholder: "〒" %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-sm-3">
+          <%= f.text_field :tel, class: "form-control", placeholder: "Telephone" %>
+        </div>
+        <div class="col-sm-3">
+          <%= f.text_field :fax, class: "form-control", placeholder: "Fax Number" %>
+        </div>
+        <div class="col-sm-6">
+          <%= f.text_field :ceo, class: "form-control", placeholder: "社長名" %>
+        </div>
+      </div>
+      <%= f.submit "更新", class: "btn btn-warning m-2" %>
+    <% end %>
+  </div>
+ </div>

@@ -11,6 +11,17 @@ class Users::CompaniesController < ApplicationController
     redirect_to users_companies_path
   end
 
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    @company.user_id = current_user.id
+    @company.update(company_params)
+    redirect_to users_companies_path
+  end
+
   private
   def company_params
     params.require(:company).permit(
