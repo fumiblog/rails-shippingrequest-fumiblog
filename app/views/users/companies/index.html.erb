@@ -33,13 +33,18 @@
       <% @companies.each do |company| %>
         <div class="col">
           <div class="card">
-          <%# <div class="card" style="width: 18rem;"> %>
             <div class="card-body border">
               <h5 class="card-title"><%= company.name %>　<%= company.ceo %>社長</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %></h6>
-              <p class="card-text"><%= company.persons.name %></p>
+              <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %>　fax:<%= company.fax %></h6>
+              <% @persons.where(company_id: company.id).each do |person| %>
+                <% if person.position == "" %>
+                  <div class="card-text m-2"><%= person.name %>さん(<%= person.handy_phone %>)</div>
+                <% else %>
+                  <div class="card-text m-2"><%= person.name %><%= person.position %>(<%= person.handy_phone %>)</div>
+                <% end %>
+              <% end %>
               <a href="<%= edit_users_company_path(company) %>" class="card-link btn btn-warning">訂正</a>
-              <a href="<%= %>" class="card-link btn btn-primary">person</a>
+              <a href="<%= new_users_person_path(:id => company.id) %>" class="card-link btn btn-primary">person</a>
             </div>
           </div>
         </div>

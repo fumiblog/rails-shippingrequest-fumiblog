@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="make-person m-2 p-2">
+    <h4><%= @company.name %>　Peson Make!</h4>
+    <%= form_with model:@person, url: users_persons_path(@company), local: true do |f| %>
+      <div class="row p-2">
+        <div class="col-sm-3">
+          <%= f.text_field :name, class: "form-control", placeholder: "Person name" %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.text_field :handy_phone, class: "form-control", placeholder: "HandyPhone" %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :position, class: "form-control", placeholder: "Position" %>
+        </div>
+        <%= f.hidden_field :company_id, :value => @company.id %>
+      </div>
+      <%= f.submit "登録", class: "btn btn-success m-2" %>
+    <% end %>
+  </div>
+ </div>

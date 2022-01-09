@@ -2,6 +2,7 @@ class Users::CompaniesController < ApplicationController
   def index
     @companies = Company.all
     @company = Company.new
+    @persons = Person.all
   end
 
   def create
