@@ -5,11 +5,32 @@ class Users::PersonsController < ApplicationController
     # byebug
   end
 
+  def index
+    @person = Person.new
+    @persons = Person.where(company_id: params[:id])
+    @company = Company.find(params[:id])
+  end
+
   def create
     @person = Person.new(person_params)
-    # byebug
-    # @person.company_id = params[:id]
     @person.save!
+    redirect_to users_companies_path
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+    @person = Person.find(params[:id])
+  end
+
+  def update
+    @person = Person.find(params[:id])
+    @person.update(person_params)
+    redirect_to users_companies_path
+  end
+
+  def destroy
+    @person = Person.find(params[:id])
+    @person.destroy
     redirect_to users_companies_path
   end
 

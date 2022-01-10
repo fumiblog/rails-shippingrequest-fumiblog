@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_051816) do
     t.datetime "ship_date"
   end
 
-  create_table "persons", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
     t.integer "company_id"
     t.string "position"

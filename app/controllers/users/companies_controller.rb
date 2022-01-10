@@ -23,6 +23,12 @@ class Users::CompaniesController < ApplicationController
     redirect_to users_companies_path
   end
 
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    redirect_to users_companies_path
+  end
+
   private
   def company_params
     params.require(:company).permit(
