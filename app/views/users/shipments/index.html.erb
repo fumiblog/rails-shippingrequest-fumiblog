@@ -24,7 +24,7 @@
           <% @heads.order(ship_date: "DESC").each do |head| %>
             <tr>
               <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
-              <td><%= head.vehicle %></td>
+              <td><%= head.vehicle_i18n %></td>
               <td><%= head.unic %></td>
               <td><%= head.waiting_place %></td>
               <td><%= head.rain %></td>

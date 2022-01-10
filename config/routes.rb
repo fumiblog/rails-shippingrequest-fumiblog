@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :bodies
     resources :companies
     resources :persons
+    resources :jobs
   end
 
   

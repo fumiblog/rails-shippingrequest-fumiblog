@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="make-job m-2 p-2">
+    <h4><%= @person.name %>【<%= @person.company.name %>】　Job Make!</h4>
+    <%= form_with model:@job, url: users_jobs_path(@job), local: true do |f| %>
+      <div class="row m-2 p-2">
+        <div class="col-sm-2">
+          <%= f.date_field :date, class: "date-control", placeholder: "いつですか？" %>
+        </div>
+        <div class="col-sm-10">
+          <%#= f.select :type, Job.types_i18n.keys.map{ |k| [Job.types_i18n[k], k]} %>
+          <%= f.collection_radio_buttons :type, Job.types_i18n, :first , :last %>
+        </div>
+      </div>
+      <div class="row m-2 p-2">
+        <div class="col">
+          <%= f.text_field :content, class: "form-control", placeholder: "要件" %>
+        </div>
+        <%= f.hidden_field :person_id, :value => @person.id %>
+      </div>
+      <%= f.hidden_field :completed, :value => "0" %>
+      <%= f.submit "登録", class: "btn btn-success m-2" %>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>完了</th>
+        <th>日付</th>
+        <th>タイプ</th>
+        <th>内容</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+     
+    </tbody>
+  </table>
+</div>

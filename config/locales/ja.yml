@@ -15,6 +15,12 @@ ja:
         h10t: "10t"
         h13t: "13t"
         traler: "トレーラー"
+      unic:
+        none: "無"
+        false: "有"
+      waiting_place:
+        none: "無"
+        false: "有"
     body:
       format:
         ke: "ケ"
@@ -22,3 +28,11 @@ ja:
         m: "ｍ"
         ryubei: "m3"
         ki: "基"
+    job:
+      type:
+        mitsumori: "見積"
+        syouninirai: "承認依頼"
+        nouhinyotei: "納品予定"
+        kojoukensa: "工場検査"
+        kuremu: "クレーム"
+        wariatezu: "割当図"
