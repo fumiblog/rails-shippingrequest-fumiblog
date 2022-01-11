@@ -13,7 +13,7 @@ class Users::JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = Job.find(praarams[:id])
   end
 
   def update
