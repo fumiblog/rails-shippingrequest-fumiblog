@@ -7,9 +7,12 @@ json.array! @heads do |head|
   json.id head.id
   json.start head.ship_date
   json.title "(" + head.user.name + ")" + head.construction.name + " 納品"
-  # json.title "(" + head.user.name + ")" + head.delivery + " 納品"
 end
 
-# json.array! @heads, :id, :delivery, :ship_date
+# json.array! @jobs do |job|
+#   json.id String{Number(@job.id) + 10000}
+#   json.start @job.date
+#   json.title "(" + @job.user.name + ")" + @job.type
+# end
 
-# json.text "ほげほげ"
+

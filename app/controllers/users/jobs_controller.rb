@@ -1,7 +1,8 @@
 class Users::JobsController < ApplicationController
   def index
     @job = Job.new
-    @jobs = Job.where(person_id: params[:id])
+    @jobs = Job.all
+    # @jobs = Job.where(person_id: params[:id])
     @person = Person.find(params[:id])
     # byebug
   end
@@ -9,7 +10,7 @@ class Users::JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.save!
-    redirect_to root
+    redirect_to root_path
   end
 
   def edit
