@@ -32,7 +32,7 @@ document.addEventListener('turbolinks:load', function () {
     // events: [
     //   {
     //     title: 'event1',
-    //     start: '2021-08-12'
+    //     start: '2021-01-24'
     //   }
     // ],
 
