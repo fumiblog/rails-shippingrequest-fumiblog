@@ -2,6 +2,7 @@ class Users::ConstructionsController < ApplicationController
   def index
     @constructions = Construction.where(user_id: current_user.id)
     @bodies = Body.all
+    @companies = Company.all
     @construction = Construction.new
     # byebug
   end
@@ -15,6 +16,7 @@ class Users::ConstructionsController < ApplicationController
 
   def edit
     @construction = Construction.find(params[:id])
+    @companies = Company.all
   end
 
   def update
@@ -40,7 +42,8 @@ class Users::ConstructionsController < ApplicationController
       :person,
       :tel,
       :user_id,
-      :remark
+      :remark,
+      :company_id
     )
   end
 end

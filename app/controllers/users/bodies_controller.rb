@@ -24,8 +24,8 @@ class Users::BodiesController < ApplicationController
 
   def destroy
     @body = Body.find(params[:id])
-    @body.destroy
-    redirect_to users_bodies_path
+    @body.destroy!
+    redirect_to users_bodies_path(construction_id: @body.construction_id)
   end
 
   private
