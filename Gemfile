@@ -62,6 +62,8 @@ gem 'font-awesome-rails'
 gem 'jquery-slick-rails' #slickjs
 gem 'dropzonejs-rails' #dropzone.js
 gem 'redcarpet' #マークダウン
+gem 'prawn'
+gem 'prawn-table'
 
 #Backend
 gem 'devise'
@@ -79,3 +81,4 @@ gem 'enum_help'
 gem 'pry-byebug'
 gem 'uglifier', '~> 4.2'
 gem 'gon'
+gem 'i18n-js'

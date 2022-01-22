@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :companies
     resources :persons
     resources :jobs
+    resources :record_pdfs, only: :index
   end
 
   

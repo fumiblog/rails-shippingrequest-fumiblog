@@ -1,0 +1,2 @@
+module Users::RecordPdfsHelper
+end

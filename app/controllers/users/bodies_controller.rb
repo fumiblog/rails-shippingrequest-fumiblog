@@ -7,11 +7,8 @@ class Users::BodiesController < ApplicationController
   end
 
   def create
-    # byebug
     @body = Body.new(body_params)
-    # byebug
     @body.save!
-    # redirect_to users_constructions_path
     redirect_to request.referer
   end
 
@@ -28,7 +25,7 @@ class Users::BodiesController < ApplicationController
   def destroy
     @body = Body.find(params[:id])
     @body.destroy
-    redirect_to request.referer
+    redirect_to users_bodies_path
   end
 
   private
