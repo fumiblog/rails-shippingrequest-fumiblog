@@ -2,9 +2,7 @@ class Users::JobsController < ApplicationController
   def index
     @job = Job.new
     @jobs = Job.all
-    # @jobs = Job.where(person_id: params[:id])
     @person = Person.find(params[:id])
-    # byebug
   end
 
   def create
@@ -14,19 +12,20 @@ class Users::JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(praarams[:id])
+    @job = Job.find(params[:id])
+    @person = Person.find(@job.person_id)
   end
 
   def update
     @job = Job.find(params[:id])
     @job.update
-    redirect_to root
+    redirect_to users_jobs_path(id: @job.person_id)
   end
 
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    redirect_to root
+    redirect_to users_jobs_path(id: @job.person_id)
   end
 
   private

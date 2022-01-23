@@ -1,6 +1,14 @@
 <div class="container">
   <div class="make-job m-2 p-2">
-    <h4><%= @person.name %>【<%= @person.company.name %>】　Job Make!</h4>
+    <h4>
+      Job Make!
+      <% if @person.position == "" %>
+        <%= @person.name %>さん
+      <% else %>
+        <%= @person.name %><%= @person.position %>
+      <% end %>
+        【<%= @person.company.name %>】
+    </h4>
     <%= form_with model:@job, url: users_jobs_path(@job), local: true do |f| %>
       <div class="row m-2 p-2">
         <div class="col-sm-2">
@@ -29,7 +37,6 @@
         <th>タイプ</th>
         <th>内容</th>
         <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -39,8 +46,8 @@
           <td><%= job.date %></td>
           <td><%= job.type_i18n %></td>
           <td><%= job.content %></td>
-          <td><%#= link_to "訂正", edit_users_job_path, class: "btn btn-warning btn-sm" %></td>
-          <td><%#= link_to "削除", users_job_path(job), method::delete, class: "btn btn-danger btn-sm" %></td>
+          <%#= link_to "訂正", edit_users_job_path(job), class: "btn btn-warning btn-sm" %>
+          <td><%= link_to "削除", users_job_path(job), method: :delete, class: "btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>

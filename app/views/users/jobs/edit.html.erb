@@ -1,7 +1,15 @@
 <div class="container">
   <div class="make-job m-2 p-2">
-    <h4><%= @person.name %>【<%= @person.company.name %>】　Job Make!</h4>
-    <%= form_with model:@job, url: users_jobs_path(@job), local: true do |f| %>
+    <h4>
+      Job Edit!
+      <% if @person.position == "" %>
+        <%= @person.name %>さん
+      <% else %>
+        <%= @person.name %><%= @person.position %>
+      <% end %>
+        【<%= @person.company.name %>】
+    </h4>
+    <%= form_with model:@job, url: users_job_path(@job), local: true do |f| %>
       <div class="row m-2 p-2">
         <div class="col-sm-2">
           <%= f.date_field :date, class: "date-control", placeholder: "いつですか？" %>
@@ -18,31 +26,7 @@
         <%= f.hidden_field :person_id, :value => @person.id %>
       </div>
       <%= f.hidden_field :completed, :value => "0" %>
-      <%= f.submit "登録", class: "btn btn-success m-2" %>
+      <%= f.submit "更新", class: "btn btn-warning m-2" %>
     <% end %>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>完了</th>
-        <th>日付</th>
-        <th>タイプ</th>
-        <th>内容</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @jobs.each do |job|%>
-        <tr>
-          <td><%= job.completed %></td>
-          <td><%= job.date %></td>
-          <td><%= job.type_i18n %></td>
-          <td><%= job.content %></td>
-          <td><%= link_to "訂正", edit_users_job_path, class: "btn btn-warning btn-sm" %></td>
-          <td><%=  %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
