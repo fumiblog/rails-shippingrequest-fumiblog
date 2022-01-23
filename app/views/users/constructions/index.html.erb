@@ -76,7 +76,11 @@
 
             </td>
             <td scope="col" class="text-nowrap">
-              <%= construction.address %>
+              <% if construction.address == "" %>
+                行ってみよう！
+              <% else %>
+                <%= link_to "GoogleMap", construction.address %>
+              <% end %>
             </td>
             <td scope="col" class="text-nowrap">
               <%= construction.person %>さん
