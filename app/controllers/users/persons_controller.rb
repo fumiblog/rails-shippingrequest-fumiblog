@@ -18,8 +18,8 @@ class Users::PersonsController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
     @person = Person.find(params[:id])
+    @company = Company.find(@person.company_id)
   end
 
   def update

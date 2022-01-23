@@ -1,6 +1,6 @@
 <div class="container">
   <div class="make-person m-2 p-2">
-    <h4><%= @company.name %>　Peson Make!</h4>
+    <h4><%= @company.name %>　Person Make!</h4>
     <%= form_with model:@person, url: users_persons_path(@company), local: true do |f| %>
       <div class="row p-2">
         <div class="col-sm-3">
