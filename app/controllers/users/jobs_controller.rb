@@ -1,8 +1,8 @@
 class Users::JobsController < ApplicationController
   def index
     @job = Job.new
-    @jobs = Job.all
     @person = Person.find(params[:id])
+    @jobs = Job.where(person_id: @person.id)
   end
 
   def create
