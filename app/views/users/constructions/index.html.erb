@@ -31,10 +31,10 @@
           <tr>
             <th scope="col" class="text-nowrap">得意先</th>
             <th scope="col" class="text-nowrap">納入先</th>
+            <th scope="col" class="text-nowrap">Map</th>
             <th scope="col" class="text-nowrap">備考</th>
             <th scope="col" class="text-nowrap">工事名</th>
             <th scope="col" class="text-nowrap">商品</th>
-            <th scope="col" class="text-nowrap">納入場所</th>
             <th scope="col" class="text-nowrap">先方担当</th>
             <th scope="col" class="text-nowrap">TEL</th>
             <th scope="col" class="text-nowrap"></th>
@@ -49,6 +49,12 @@
             </td>
             <td>
               <%= construction.delivery_name %>
+            </td>
+            <td scope="col" class="text-nowrap">
+              <% if construction.address == "" %>
+              <% else %>
+                <%= link_to "Map", construction.address %>
+              <% end %>
             </td>
             <td>
               <%= construction.remark %>
@@ -74,13 +80,6 @@
               </div>
 
 
-            </td>
-            <td scope="col" class="text-nowrap">
-              <% if construction.address == "" %>
-                行ってみよう！
-              <% else %>
-                <%= link_to "GoogleMap", construction.address %>
-              <% end %>
             </td>
             <td scope="col" class="text-nowrap">
               <%= construction.person %>さん
