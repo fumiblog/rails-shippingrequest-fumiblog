@@ -35,14 +35,14 @@
   <% if user_signed_in? %>
     <div class="request">
       <div class="row">
-        <div class="col-sm border p-3 m-1">見積依頼（完了8件40％です。）
-          <div class="h1 text-danger text-end">12</div>
+        <div class="col-sm border p-3 m-1">現場件数
+          <div class="h1 text-danger text-end"><%= @constructions.count %></div>
         </div>
-        <div class="col-sm border p-3 m-1">納品予定
-          <div class="h1 text-primary text-end">8</div>
+        <div class="col-sm border p-3 m-1">顧客件数
+          <div class="h1 text-primary text-end"><%= @companies.count %></div>
         </div>
-        <div class="col-sm border p-3 m-1">承認依頼
-          <div class="h1 text-warning text-end">11</div>
+        <div class="col-sm border p-3 m-1">JOB依頼数
+          <div class="h1 text-warning text-end"><%= @jobs.count %></div>
         </div>
       </div>
     </div>

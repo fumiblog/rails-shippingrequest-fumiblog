@@ -4,6 +4,8 @@ class Users::HomesController < ApplicationController
 
   def index
     @heads = Head.all
+    @constructions = Construction.all
+    @companies = Company.all
     @jobs = Job.all
     # @day_heads = Head.all
     if user_signed_in?
