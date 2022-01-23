@@ -34,7 +34,13 @@
         <div class="col">
           <div class="card">
             <div class="card-body border">
-              <h5 class="card-title"><%= company.name %>　<%= company.ceo %>社長</h5>
+              <h5 class="card-title">
+                <%= company.name %>　<%= company.ceo %>社長
+                <% if company.construction.count == 0 %>
+                <% else %>
+                  <span class="badge bg-success rounded-pill"><%= company.construction.count %></span>
+                <% end %>
+              </h5>
               <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %>　fax:<%= company.fax %></h6>
               <% @persons.where(company_id: company.id).each do |person| %>
                 <% if person.position == "" %>
