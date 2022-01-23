@@ -38,9 +38,21 @@
               <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %>　fax:<%= company.fax %></h6>
               <% @persons.where(company_id: company.id).each do |person| %>
                 <% if person.position == "" %>
-                  <div class="card-text m-2"><%= link_to person.name, users_jobs_path(:id => person.id) %>さん(<%= person.handy_phone %>)</div>
+                  <div class="card-text m-2">
+                    <%= link_to person.name, users_jobs_path(:id => person.id) %>さん(<%= person.handy_phone %>)
+                    <% if person.jobs.count == 0 %>
+                    <% else %>
+                      <span class="badge bg-danger rounded-pill"><%= person.jobs.count %></span>
+                    <% end %>
+                  </div>
                 <% else %>
-                  <div class="card-text m-2"><%= link_to person.name, users_jobs_path(:id => person.id) %><%= person.position %>(<%= person.handy_phone %>)</div>
+                  <div class="card-text m-2">
+                    <%= link_to person.name, users_jobs_path(:id => person.id) %><%= person.position %>(<%= person.handy_phone %>)
+                    <% if person.jobs.count == 0 %>
+                    <% else %>
+                      <span class="badge bg-danger rounded-pill"><%= person.jobs.count %></span>
+                    <% end %>
+                  </div>
                 <% end %>
               <% end %>
               <a href="<%= edit_users_company_path(company) %>" class="card-link btn btn-warning btn-sm">訂正</a>
