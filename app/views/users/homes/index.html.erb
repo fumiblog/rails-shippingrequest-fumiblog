@@ -13,24 +13,56 @@
     <%= javascript_pack_tag 'calendar/event' %>
   </div>
   <div class="row">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>担当</th>
-          <th>時間</th>
-          <th>現場</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @day_heads.each do |day_data| %>
+    <div class="col-sm-6">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted h3">Weekly shipment</span>
+        <span class="badge bg-secondary rounded-pill"><%= @day_heads.count %></span>
+      </h4>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= day_data.user.name %></td>
-            <td><%= day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分") %></td>
-            <td><%= day_data.construction.name %></td>
+            <th>担当</th>
+            <th>時間</th>
+            <th>現場</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @day_heads.each do |day_data| %>
+            <tr>
+              <td><%= day_data.user.name %></td>
+              <td><%= day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分") %></td>
+              <td><%= day_data.construction.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted h3">Todo List</span>
+        <span class="badge bg-secondary rounded-pill"><%= @job_periods.count %></span>
+      </h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>期限</th>
+            <th>依頼主</th>
+            <th>内容</th>
+            <th>詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @job_periods.each do |job_period| %>
+            <tr>
+              <td><%= job_period.date %></td>
+              <td><%= job_period.person.name %>さん</td>
+              <td><%= job_period.type_i18n %></td>
+              <td><%= job_period.content %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <% if user_signed_in? %>
     <div class="request">
