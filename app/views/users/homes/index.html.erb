@@ -37,32 +37,35 @@
         </tbody>
       </table>
     </div>
-    <div class="col-sm-6">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted h3">Todo List</span>
-        <span class="badge bg-secondary rounded-pill"><%= @job_periods.count %></span>
-      </h4>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>期限</th>
-            <th>依頼主</th>
-            <th>内容</th>
-            <th>詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @job_periods.each do |job_period| %>
+    <% if user_signed_in? %>
+      <div class="col-sm-6">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Todo List</span>
+          <span class="badge bg-secondary rounded-pill"><%= @job_periods.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td><%= job_period.date %></td>
-              <td><%= job_period.person.name %>さん</td>
-              <td><%= job_period.type_i18n %></td>
-              <td><%= job_period.content %></td>
+              <th>期限</th>
+              <th>依頼主</th>
+              <th>内容</th>
+              <th>詳細</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% @job_periods.each do |job_period| %>
+              <tr>
+                <td><%= job_period.date %></td>
+                <td><%= job_period.person.name %>さん</td>
+                <td><%= job_period.type_i18n %></td>
+                <td><%= job_period.content %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+    <% end %>
   </div>
   <% if user_signed_in? %>
     <div class="request">
