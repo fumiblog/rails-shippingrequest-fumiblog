@@ -38,7 +38,7 @@
                 <%= company.name %>　<%= company.ceo %>社長
                 <% if company.construction.count == 0 %>
                 <% else %>
-                  <span class="badge bg-success rounded-pill"><%= company.construction.count %></span>
+                  <span class="badge bg-success rounded-pill"><%= link_to company.construction.count, users_constructions_path(:id => company.id), class: "text-white" %></span>
                 <% end %>
               </h5>
               <h6 class="card-subtitle mb-2 text-muted">Tel:<%= company.tel %>　fax:<%= company.fax %></h6>

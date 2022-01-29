@@ -1,6 +1,12 @@
 class Users::ConstructionsController < ApplicationController
   def index
-    @constructions = Construction.where(user_id: current_user.id)
+    if params[:id] == nil
+      @constructions = Construction.where(user_id: current_user.id)
+    else
+      @user_const = Construction.where(user_id: current_user.id)
+      @constructions = Construction.where(company_id: params[:id])
+      
+    end
     @bodies = Body.all
     @companies = Company.all
     @construction = Construction.new

@@ -25,79 +25,153 @@
         <%= f.submit "登録", class: "btn btn-success" %>
       <% end %>
     </div>
-    <div class="constructions-index table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col" class="text-nowrap">得意先</th>
-            <th scope="col" class="text-nowrap">納入先</th>
-            <th scope="col" class="text-nowrap">Map</th>
-            <th scope="col" class="text-nowrap">備考</th>
-            <th scope="col" class="text-nowrap">工事名</th>
-            <th scope="col" class="text-nowrap">商品</th>
-            <th scope="col" class="text-nowrap">先方担当</th>
-            <th scope="col" class="text-nowrap">TEL</th>
-            <th scope="col" class="text-nowrap"></th>
-            <th scope="col" class="text-nowrap"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @constructions.each do |construction| %>
-          <tr>
-            <td>
-              <%= construction.company.name %>
-            </td>
-            <td>
-              <%= construction.delivery_name %>
-            </td>
-            <td scope="col" class="text-nowrap">
-              <% if construction.address == "" %>
-              <% else %>
-                <%= link_to "Map", construction.address %>
-              <% end %>
-            </td>
-            <td>
-              <%= construction.remark %>
-            </td>
-            <td scope="col" class="text-nowrap">
-              <%= link_to construction.name, users_bodies_path(:construction_id => construction.id) %>
-            </td scope="col" class="text-nowrap">
-            <td>
+    <% if params[:id] == nil %>
+      <div class="constructions-index table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-nowrap">得意先</th>
+              <th scope="col" class="text-nowrap">納入先</th>
+              <th scope="col" class="text-nowrap">Map</th>
+              <th scope="col" class="text-nowrap">備考</th>
+              <th scope="col" class="text-nowrap">工事名</th>
+              <th scope="col" class="text-nowrap">商品</th>
+              <th scope="col" class="text-nowrap">先方担当</th>
+              <th scope="col" class="text-nowrap">TEL</th>
+              <th scope="col" class="text-nowrap"></th>
+              <th scope="col" class="text-nowrap"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @constructions.each do |construction| %>
+            <tr>
+              <td>
+                <%= construction.company.name %>
+              </td>
+              <td>
+                <%= construction.delivery_name %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <% if construction.address == "" %>
+                <% else %>
+                  <%= link_to "Map", construction.address %>
+                <% end %>
+              </td>
+              <td>
+                <%= construction.remark %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to construction.name, users_bodies_path(:construction_id => construction.id) %>
+              </td scope="col" class="text-nowrap">
+              <td>
 
-              <p>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <%= @bodies.where(construction_id: construction.id).count %>
-                </a>
-              </p>
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  <% @bodies.where(construction_id: construction.id).each do |body| %>
-                    <a href="#">
-                      <%= body.product_name %>（<%= body.quantity %>）
-                    </a>
-                  <% end %>
+                <p>
+                  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <%= @bodies.where(construction_id: construction.id).count %>
+                  </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <% @bodies.where(construction_id: construction.id).each do |body| %>
+                      <a href="#">
+                        <%= body.product_name %>（<%= body.quantity %>）
+                      </a>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
 
 
-            </td>
-            <td scope="col" class="text-nowrap">
-              <%= construction.person %>さん
-            </td>
-            <td scope="col" class="text-nowrap">
-              <%= construction.tel %>
-            </td>
-            <td scope="col" class="text-nowrap">
-              <%= link_to "訂正", edit_users_construction_path(construction), class: "btn btn-warning" %>
-            </td>
-            <td scope="col" class="text-nowrap">
-              <%= link_to "削除", users_construction_path(construction), method: :delete, class: "btn btn-danger" %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= construction.person %>さん
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= construction.tel %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to "訂正", edit_users_construction_path(construction), class: "btn btn-warning" %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to "削除", users_construction_path(construction), method: :delete, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="constructions-index table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-nowrap">納入先</th>
+              <th scope="col" class="text-nowrap">Map</th>
+              <th scope="col" class="text-nowrap">備考</th>
+              <th scope="col" class="text-nowrap">工事名</th>
+              <th scope="col" class="text-nowrap">商品</th>
+              <th scope="col" class="text-nowrap">先方担当</th>
+              <th scope="col" class="text-nowrap">TEL</th>
+              <th scope="col" class="text-nowrap"></th>
+              <th scope="col" class="text-nowrap"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @constructions.each do |construction| %>
+            <tr>
+              <td>
+                <%= construction.delivery_name %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <% if construction.address == "" %>
+                <% else %>
+                  <%= link_to "Map", construction.address %>
+                <% end %>
+              </td>
+              <td>
+                <%= construction.remark %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to construction.name, users_bodies_path(:construction_id => construction.id) %>
+              </td scope="col" class="text-nowrap">
+              <td>
+
+                <p>
+                  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <%= @bodies.where(construction_id: construction.id).count %>
+                  </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <% @bodies.where(construction_id: construction.id).each do |body| %>
+                      <a href="#">
+                        <%= body.product_name %>（<%= body.quantity %>）
+                      </a>
+                    <% end %>
+                  </div>
+                </div>
+
+
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= construction.person %>さん
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= construction.tel %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to "訂正", edit_users_construction_path(construction), class: "btn btn-warning" %>
+              </td>
+              <td scope="col" class="text-nowrap">
+                <%= link_to "削除", users_construction_path(construction), method: :delete, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
+    <%= link_to "見積", users_companies_path, class: "btn btn-warning" %>
   </div>
 </div>
 
