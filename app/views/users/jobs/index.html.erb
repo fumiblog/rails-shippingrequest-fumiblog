@@ -42,10 +42,23 @@
     <tbody>
       <% @jobs.each do |job|%>
         <tr>
-          <td><%= job.completed %></td>
-          <td><%= job.date %></td>
-          <td><%= job.type_i18n %></td>
-          <td><%= job.content %></td>
+          <td>
+            <%= job.completed ? '完了！' : '確認中' %>
+            <% if job.completed %>
+              <%= link_to '確認中に戻す', users_job_path(job, job: {completed: false}), method: :put, class: "btn btn-sm btn-danger" %>
+            <% else %>
+              <%= link_to '完了にする', users_job_path(job, job: {completed: true}), method: :put, class: "btn btn-sm btn-success" %>
+            <% end %>
+          </td>
+          <% if job.completed == true %>
+            <td class="text-muted"><%= job.date %></td>
+            <td class="text-muted"><%= job.type_i18n %></td>
+            <td class="text-muted"><%= job.content %></td>
+          <% else %>
+            <td><%= job.date %></td>
+            <td><%= job.type_i18n %></td>
+            <td><%= job.content %></td>
+          <% end %>
           <%#= link_to "訂正", edit_users_job_path(job), class: "btn btn-warning btn-sm" %>
           <td><%= link_to "削除", users_job_path(job), method: :delete, class: "btn btn-danger btn-sm" %></td>
         </tr>

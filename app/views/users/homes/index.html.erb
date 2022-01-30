@@ -54,12 +54,21 @@
           </thead>
           <tbody>
             <% @job_periods.each do |job_period| %>
-              <tr>
-                <td><%= job_period.date %></td>
-                <td><%= job_period.person.name %>さん</td>
-                <td><%= job_period.type_i18n %></td>
-                <td><%= job_period.content %></td>
-              </tr>
+              <% if job_period.completed == true %>
+                <tr class="text-muted">
+                  <td><%= job_period.date %></td>
+                  <td><%= job_period.person.name %>さん</td>
+                  <td><%= job_period.type_i18n %></td>
+                  <td><%= job_period.content %></td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td><%= job_period.date %></td>
+                  <td><%= job_period.person.name %>さん</td>
+                  <td><%= job_period.type_i18n %></td>
+                  <td><%= job_period.content %></td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

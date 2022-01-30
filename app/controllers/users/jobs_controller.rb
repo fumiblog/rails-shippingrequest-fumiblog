@@ -2,7 +2,7 @@ class Users::JobsController < ApplicationController
   def index
     @job = Job.new
     @person = Person.find(params[:id])
-    @jobs = Job.where(person_id: @person.id)
+    @jobs = Job.where(person_id: @person.id).order(date: "DESC")
   end
 
   def create
@@ -18,7 +18,9 @@ class Users::JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-    @job.update
+    if @job.update(job_params)
+      flash[:notice] = "編集できました"
+    end
     redirect_to users_jobs_path(id: @job.person_id)
   end
 
