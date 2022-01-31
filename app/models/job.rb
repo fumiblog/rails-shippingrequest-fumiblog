@@ -8,6 +8,7 @@ class Job < ApplicationRecord
     kojoukensa: 3,
     kuremu: 4,
     wariatezu: 5,
-    shukin: 6
+    shukin: 6,
+    sonota: 7
   }
 end
