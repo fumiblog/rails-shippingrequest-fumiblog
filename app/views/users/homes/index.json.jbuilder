@@ -2,13 +2,13 @@ if user_signed_in?
   json.array! @heads do |head|
     # json.id head.id
     json.start head.ship_date
-    json.title "(" + head.user.name + ")" + head.construction.name + " 納品"
+    json.title head.construction.name + " 納品"
   end
 else
   json.array! @heads do |head|
     # json.id head.id
     json.start head.ship_date
-    json.title "(" + head.user.name + ")" + " 納品"
+    json.title "(" + head.user.name + ")" + head.construction.name + " 納品"
   end
 end
 
