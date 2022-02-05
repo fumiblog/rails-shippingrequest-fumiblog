@@ -57,16 +57,16 @@
               <% if job_period.completed == true %>
                 <tr>
                   <td class="text-danger">完了<%= job_period.updated_at.strftime('%m-%d') %></td>
-                  <td><%= job_period.person.name %>さん</td>
-                  <td><%= job_period.type_i18n %></td>
-                  <td><%= job_period.content %></td>
+                  <td class="text-muted"><%= job_period.person.company.name %>/<%= job_period.person.name %>さん</td>
+                  <td class="text-muted"><%= job_period.type_i18n %></td>
+                  <td class="text-muted"><%= job_period.content %></td>
                 </tr>
               <% else %>
                 <tr>
                   <td>
                     <%= job_period.date %>
                     <%= link_to '完了', users_job_path(job_period, job: {completed: true}), method: :put, class: "btn btn-sm btn-success" %></td>
-                  <td><%= job_period.person.name %>さん</td>
+                  <td><%= job_period.person.company.name %>/<%= job_period.person.name %>さん</td>
                   <td><%= job_period.type_i18n %></td>
                   <td><%= job_period.content %></td>
                 </tr>
