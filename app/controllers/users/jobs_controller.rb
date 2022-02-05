@@ -21,7 +21,7 @@ class Users::JobsController < ApplicationController
     if @job.update(job_params)
       flash[:notice] = "編集できました"
     end
-    redirect_to users_jobs_path(id: @job.person_id)
+      redirect_to users_jobs_path(id: @job.person_id)
   end
 
   def destroy
