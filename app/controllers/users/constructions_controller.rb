@@ -49,7 +49,8 @@ class Users::ConstructionsController < ApplicationController
       :tel,
       :user_id,
       :remark,
-      :company_id
+      :company_id,
+      :image
     )
   end
 end

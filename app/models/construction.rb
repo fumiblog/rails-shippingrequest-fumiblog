@@ -3,6 +3,7 @@ class Construction < ApplicationRecord
   has_many :heads, dependent: :destroy
   has_many :bodies, dependent: :destroy
   belongs_to :company
+  mount_uploader :image, ImageUploader
   
 
   def full_address

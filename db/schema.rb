@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_135600) do
+ActiveRecord::Schema.define(version: 2022_02_05_055022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_135600) do
     t.string "delivery_name"
     t.string "remark"
     t.integer "company_id"
+    t.string "image"
   end
 
   create_table "form_bases", force: :cascade do |t|
