@@ -44,6 +44,27 @@ class Users::ShipmentsController < ApplicationController
     # byebug
   end
 
+  def edit
+    @head = Head.find(params[:id])
+    @construction = Construction.find(@head.construction_id)
+    @heads = Head.where(construction_id: @head.construction_id).order(ship_date: "DESC")
+  end
+
+  def update
+    @head = Head.find(params[:id])
+    @construction = Construction.find(@head.construction_id)
+    if params[:flag] == '0'
+      @head.delivery = @construction.delivery_name
+      @head.delivery_address = @construction.address
+      @head.delivery_person = @construction.person
+      @head.delivery_tel = @construction.tel
+    elsif params[:flag] == '1'
+    end
+    @head.update(head_params)
+    redirect_to root_path
+  end
+
+  
   def destroy
     @head = Head.find(params[:id])
     @head.destroy
