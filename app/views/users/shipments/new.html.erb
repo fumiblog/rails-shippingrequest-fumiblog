@@ -4,7 +4,7 @@
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="/assets/kashiwagi_logo.png" alt="" width="52" height="37">
         <h2><%= @construction.name %></h2>
-        <p class="lead bg-warning text-dark"><%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）</p>
+        <p class="lead bg-warning text-dark"><%= @construction.delivery_name %>（<%= @construction.name %>）<%= @construction.person %>さん（<%= @construction.tel %>）</p>
         <p class="lead">出荷内容を確定して下さい！</p>
     </div>
 
@@ -84,6 +84,10 @@
                 <div class="form-label">降雨時の対応</div>
                 <%= f.text_field :rain, class: "form-control" %>
               </div>
+              <div class="col-12">
+                <div class="form-label">備考</div>
+                <%= f.text_field :remark, class: "form-control" %>
+              </div>
             </div>
 
             <div class="row g-3">
@@ -91,7 +95,7 @@
                 <%= radio_button_tag :flag, 0 %>登録住所<br />
               </div>
               <div class="col-sm-12">
-                <%= @construction.delivery_name %>（<%= @construction.address %>）<%= @construction.person %>さん（<%= @construction.tel %>）
+                <%= @construction.delivery_name %>（<%= @construction.name %>）<%= @construction.person %>さん（<%= @construction.tel %>）
               </div>
             </div> 
             <div class="row g-3">
