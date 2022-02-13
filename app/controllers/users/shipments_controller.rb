@@ -4,7 +4,7 @@ class Users::ShipmentsController < ApplicationController
     @head.shippeds.new
     # @form = Form::ProductCollection.new
     @construction = Construction.find(params[:id])
-    @bodies = Body.where(construction_id: params[:id])
+    @bodies = Body.where(construction_id: params[:id]).order(created_at: "ASC")
     @heads = Head.where(construction_id: params[:id]).order(ship_date: "DESC")
     @shippeds = Shipped.where(head_id: @heads)
     # byebug

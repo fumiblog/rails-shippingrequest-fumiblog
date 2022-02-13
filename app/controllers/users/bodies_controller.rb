@@ -3,7 +3,7 @@ class Users::BodiesController < ApplicationController
     # byebug
     @construction = Construction.find(params[:construction_id])
     @body = Body.new
-    @bodies = Body.where(construction_id: params[:construction_id])
+    @bodies = Body.where(construction_id: params[:construction_id]).order(created_at: "ASC")
   end
 
   def create
