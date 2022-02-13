@@ -6,17 +6,12 @@
           <tr>
             <th>出荷日時</th>
             <th>搬入車両</th>
-            <th>ユニック</th>
-            <th>待機場所</th>
-            <th>雨対応</th>
+            <th>備考</th>
             <th>納入先</th>
             <th>担当者</th>
             <th>TEL</th>
-            <th>住所</th>
-            <th>受注No</th>
             <th>工事名</th>
-            <th>施工金具</th>
-            <th>備考</th>
+            <th>納品詳細</th>
             <th></th>
             <th></th>
           </tr>
@@ -26,17 +21,21 @@
             <tr>
               <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
               <td><%= head.vehicle_i18n %></td>
-              <td><%= head.unic %></td>
-              <td><%= head.waiting_place %></td>
-              <td><%= head.rain %></td>
+              <td><%= head.remark %></td>
               <td><%= head.delivery %></td>
               <td><%= head.delivery_person %></td>
               <td><%= head.delivery_tel %></td>
-              <td><%= head.delivery_address %></td>
-              <td><%= head.order_no %></td>
               <td><%= head.construction.name %></td>
-              <td><%= head.construction_metal %></td>
-              <td><%= head.remark %></td>
+              <td class="small">
+                <% @shippeds.where(head_id: head.id).each do |shipped| %>
+                  <% if shipped.quantity == nil %>
+                  <% else %>
+                    <p>
+                      <%= shipped.body.product_name %>【<%= shipped.quantity %>】
+                    </p>
+                  <% end %>
+                <% end %>
+              </td>
               <td><%= link_to "訂正", edit_users_shipment_path(head), class: "btn btn-warning" %></td>
               <td><%= link_to "削除", users_shipment_path(head), method: :delete, class: "btn btn-danger" %></td>
             </tr>

@@ -31,11 +31,12 @@ class Users::ShipmentsController < ApplicationController
   end
 
   def index
-    # byebug
     if params[:construction_id] == nil
       @heads = Head.all
+      @shippeds = Shipped.where(head_id: @heads.ids)
     else
       @heads = Head.where(construction_id: params[:construction_id])
+      @shippeds = Shipped.where(head_id: @heads.ids)
     end
     # byebug
   end
