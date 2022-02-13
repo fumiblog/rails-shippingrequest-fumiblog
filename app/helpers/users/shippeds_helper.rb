@@ -1,0 +1,2 @@
+module Users::ShippedsHelper
+end

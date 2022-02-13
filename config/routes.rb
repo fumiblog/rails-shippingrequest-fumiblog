@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :persons
     resources :jobs
     resources :record_pdfs, only: :index
+    resources :shippeds
   end
 
   

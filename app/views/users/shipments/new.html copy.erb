@@ -9,12 +9,60 @@
     </div>
 
     <div class="row g-3">
-      <%= form_with model: @head, url: users_shipments_path, local: true do |f| %>
-        <div class="col-md-7 col-lg-8">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted h3">Shipping request</span>
-          </h4>
-          <div class="needs-validation" novalidate>
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3"> Products</span>
+          <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
+        </h4>
+        <ul class="list-group mb-3">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>出荷</th>
+                <th>商品名</th>
+                <th>注文数</th>
+                <th>送付数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= f.fields_for :shippeds do |shipped| %>
+                <% @bodies.each do |body| %>
+                  <tr>
+                    <td><input type="checkbox" data="<%= body.id %>" /></td>
+                    <td class="text-secondary"><%= body.product_name %></td>
+                    <td class="text-end text-secondary"><%= body.quantity %></td>
+                    <td>
+                      <input type="text" style="width: 40px;">
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">  Shipping List</span>
+          <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <tbody>
+            <% @heads.each do |head| %>
+              <tr>
+                <td class="text-secondary"><%= link_to head.ship_date.strftime('%y-%m-%d(%a) %H:%M'), users_shipments_path(:construction_id => head.construction_id) %></td>
+                <td class="text-secondary"><%= head.delivery_person %>さん</td>
+                <td class="text-secondary"><%= head.construction.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Shipping request</span>
+        </h4>
+
+
+        <div class="needs-validation" novalidate>
+          <%= form_with model: @head, url: users_shipments_path, local: true do |f| %>
             <div class="row g-3">
               <div class="col-5">
                 <div class="form-label">出荷日</div>
@@ -75,69 +123,12 @@
                 <%= f.text_field :delivery_address, class: "form-control" %>
               </div>
               <%= f.hidden_field :construction_id, :value => @construction.id %>
+              <%= f.submit "登録する", class: "w-100 btn btn-primary btn-lg" %>
             </div>
-          </div>
+          <% end %>
         </div>
-        <div class="col-md-5 col-lg-4 order-md-last">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted h3"> Products</span>
-            <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
-          </h4>
-          <div class="list-group mb-3">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>商品名</th>
-                  <th>注文数</th>
-                  <th>注文残</th>
-                  <th>送付数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @bodies.each do |body| %>
-                  <%= f.fields_for :shippeds do |shipped| %>
-                    <tr>
-                      <%= shipped.hidden_field :body_id, value: body.id %>
-                      <td class="text-secondary"><%= body.product_name %></td>
-                      <td class="text-end text-secondary"><%= body.quantity %></td>
-                      <td class="text-end text-secondary"><%= body.quantity.to_i - body.shippeds.sum(:quantity) %></td>
-                      <td><%= shipped.text_field :quantity, :style => "width: 40px;" %></td>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <%= f.submit "登録する", class: "w-100 btn btn-primary btn-lg" %>
-      <% end %>
+      </div>
     </div>
-    <h4 class="d-flex justify-content-between align-items-center mb-3">
-      <span class="text-muted h3">  Shipping List</span>
-      <span class="badge bg-secondary rounded-pill"><%#= @constructions.count %></span>
-    </h4>
-    <table class="table table-striped">
-      <tbody>
-        <% @heads.each do |head| %>
-          <tr>
-            <td class="text-secondary"><%= link_to head.ship_date.strftime('%y-%m-%d(%a) %H:%M'), users_shipments_path(:construction_id => head.construction_id) %></td>
-            <td class="text-secondary"><%= head.delivery_person %>さん</td>
-            <td class="text-secondary"><%= head.vehicle_i18n %></td>
-            <td class="text-secondary"><%= head.remark %></td>
-            <td class="text-secondary">
-              <% @shippeds.where(head_id: head.id).each do |shipped| %>
-                <% if shipped.quantity == nil %>
-                <% else %>
-                  <p class="small">
-                    <%= shipped.body.product_name %>(<%= shipped.quantity %>)　
-                  </p>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
   </main>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
