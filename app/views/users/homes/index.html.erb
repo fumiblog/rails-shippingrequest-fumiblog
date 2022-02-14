@@ -24,7 +24,10 @@
             <th>担当</th>
             <th>時間</th>
             <th>現場</th>
-            <th>詳細</th>
+            <% if user_signed_in?%>
+              <th>詳細</th>
+            <% else %>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -33,16 +36,19 @@
               <td><%= day_data.user.name %></td>
               <td><%= day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分") %></td>
               <td><%= day_data.construction.company.name %>/<%= day_data.construction.name %></td>
-              <td class="small">
-                <% @shippeds.where(head_id: day_data.id).each do |shipped| %>
-                  <% if shipped.quantity == nil %>
-                  <% else %>
-                    <p>
-                      <%= shipped.body.product_name %>【<%= shipped.quantity %>】
-                    </p>
+              <% if user_signed_in? %>
+                <td class="small">
+                  <% @shippeds.where(head_id: day_data.id).each do |shipped| %>
+                    <% if shipped.quantity == nil %>
+                    <% else %>
+                      <p>
+                        <%= shipped.body.product_name %>【<%= shipped.quantity %>】
+                      </p>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </td>
+                </td>
+              <% else %>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
