@@ -8,6 +8,7 @@ class Body < ApplicationRecord
     m: 2,
     ryubei: 3,
     ki: 4,
-    hon: 5
+    hon: 5,
+    mai: 6
   }
 end
