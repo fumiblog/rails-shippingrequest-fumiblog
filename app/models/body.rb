@@ -7,6 +7,7 @@ class Body < ApplicationRecord
     ko: 1,
     m: 2,
     ryubei: 3,
-    ki: 4
+    ki: 4,
+    hon: 5
   }
 end
