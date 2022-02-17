@@ -24,6 +24,7 @@ ja:
         ki: "基"
         hon: "本"
         mai: "枚"
+        ton: "t"
     job:
       type:
         mitsumori: "見積"

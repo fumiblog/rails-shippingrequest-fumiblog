@@ -9,6 +9,7 @@ class Body < ApplicationRecord
     ryubei: 3,
     ki: 4,
     hon: 5,
-    mai: 6
+    mai: 6,
+    ton: 7
   }
 end
