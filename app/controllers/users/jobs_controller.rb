@@ -7,8 +7,11 @@ class Users::JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    @job.save!
-    redirect_to root_path
+    if @job.save
+      redirect_to root_path
+    else
+      redirect_to users_jobs_path(id: @job.person_id)
+    end
   end
 
   def edit
