@@ -16,7 +16,7 @@ class Users::HomesController < ApplicationController
       @job_periods = @job_pasts + @jobs.where(date: Date.today - 7 .. Date.today + 10).order(date: "DESC")
       @user_heads = Head.where(user_id: current_user.id)
       # byebug
-      @day_heads = @user_heads.where(ship_date: Time.new - 1.day .. Time.new + 1.week)
+      @day_heads = @user_heads.where(ship_date: Time.new .. Time.new + 1.week).order(ship_date: "ASC")
       @shippeds = Shipped.where(head_id: @day_heads.ids)
       # byebug
     else
