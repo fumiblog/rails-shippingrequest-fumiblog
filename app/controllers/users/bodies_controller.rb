@@ -4,6 +4,7 @@ class Users::BodiesController < ApplicationController
     @construction = Construction.find(params[:construction_id])
     @body = Body.new
     @bodies = Body.where(construction_id: params[:construction_id]).order(created_at: "ASC")
+    # byebug
   end
 
   def create

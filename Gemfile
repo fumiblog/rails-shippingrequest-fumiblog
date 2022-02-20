@@ -64,6 +64,7 @@ gem 'dropzonejs-rails' #dropzone.js
 gem 'redcarpet' #マークダウン
 gem 'prawn'
 gem 'prawn-table'
+gem 'rqrcode'
 
 #Backend
 gem 'devise'
