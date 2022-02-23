@@ -18,6 +18,7 @@ class Users::HomesController < ApplicationController
       # byebug
       @day_heads = @user_heads.where(ship_date: Time.new .. Time.new + 1.week).order(ship_date: "ASC")
       @shippeds = Shipped.where(head_id: @day_heads.ids)
+      @day = @user_heads.where(ship_date: Time.now.beginning_of_day .. Time.now.end_of_day)
       # byebug
     else
       @day_heads = Head.where(ship_date: Time.new - 1.day .. Time.new + 1.week)
