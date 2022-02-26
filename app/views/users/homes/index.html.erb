@@ -40,7 +40,7 @@
           <% @day_heads.each do |day_data| %>
             <tr>
               <td><%= day_data.user.name %></td>
-              <td><%= link_to day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分"), edit_users_shipment_path(day_data) %></td>
+              <td><%= link_to day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分"), invoice_users_shipments_path(:id => day_data.id, format: "pdf"), method: :post %></td>
               <td><%= day_data.construction.company.name %>/<%= day_data.construction.name %></td>
               <% if user_signed_in? %>
                 <td class="small">

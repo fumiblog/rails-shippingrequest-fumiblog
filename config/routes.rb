@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'homes/index'
     resources :shipments do
       collection do
-        post :confirm
+        post :invoice
       end
     end
     resources :constructions
