@@ -234,13 +234,13 @@ class InvoicePdf < Prawn::Document
     grid([2.38, 3.26], [7, 3.68]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
         stroke_horizontal_rule
-        pad(10) { text "　#{shipped.body.product_name}" }
+        pad(10) { text "　#{shipped.body.product_name}",size: 9 }
       end
     end
     grid([2.38, 3.68], [7, 3.99]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
         stroke_horizontal_rule
-        pad(10) { text "#{shipped.quantity}　",align: :right }
+        pad(10) { text "#{shipped.quantity}　",align: :right, size: 9 }
       end
     end
 
