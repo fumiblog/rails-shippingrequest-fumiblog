@@ -50,11 +50,11 @@ class Users::ShipmentsController < ApplicationController
       format.html
       format.pdf do 
         pdf = InvoicePdf.new(@head)
-
+        
         send_data pdf.render,
-          filename: "invoice.pdf",
-          type: "application/pdf",
-          disposition: "inline"
+        filename: "invoice.pdf",
+        type: "application/pdf",
+        disposition: "inline"
       end
     end
     # byebug

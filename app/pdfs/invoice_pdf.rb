@@ -228,6 +228,23 @@ class InvoicePdf < Prawn::Document
       at: [750, y], width: width, height: height, align: :center, valign: :center, size: 11
     )
     
+    define_grid(columns: 5, rows: 8, gutter: 10)
+    grid(4, 0).show
+    grid(5, 1).show
+    grid([2.38, 3.26], [7, 3.68]).bounding_box do
+      Shipped.where(head_id: @head.id).each do |shipped|
+        stroke_horizontal_rule
+        pad(10) { text "　#{shipped.body.product_name}" }
+      end
+    end
+    grid([2.38, 3.68], [7, 3.99]).bounding_box do
+      Shipped.where(head_id: @head.id).each do |shipped|
+        stroke_horizontal_rule
+        pad(10) { text "#{shipped.quantity}　",align: :right }
+      end
+    end
+
+    grid([7, 0], [7, 1]).show
     
   end
 
