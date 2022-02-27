@@ -229,23 +229,32 @@ class InvoicePdf < Prawn::Document
     )
     
     define_grid(columns: 5, rows: 8, gutter: 10)
-    grid(4, 0).show
-    grid(5, 1).show
+    grid([2, 0.1], [7.1, 2.2]).bounding_box do
+      text "#{@head.construction.image}"
+    end
     grid([2.38, 3.26], [7, 3.68]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
         stroke_horizontal_rule
-        pad(10) { text "　#{shipped.body.product_name}",size: 9 }
+        pad(8) { text "　#{shipped.body.product_name}",size: 10 }
       end
+      text "
+      - 備 考 -----------------------------------------
+      
+      　#{@head.remark}"
     end
     grid([2.38, 3.68], [7, 3.99]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
         stroke_horizontal_rule
-        pad(10) { text "#{shipped.quantity}　",align: :right, size: 9 }
+        pad(8) { text "#{shipped.quantity}　",align: :right, size: 10 }
       end
     end
-
-    grid([7, 0], [7, 1]).show
     
+
+    stroke do
+      rectangle [530, 366], 220, 370
+      rectangle [750, 366], 50, 370
+    end
+
   end
 
   def content
