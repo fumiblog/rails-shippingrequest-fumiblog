@@ -194,7 +194,7 @@ class InvoicePdf < Prawn::Document
     y = cursor - 50
     stroke_rectangle [580, y], width, height
     text_box(
-      "#{@head.construction.name}",
+      "",
       at: [580, y], width: width, height: height, align: :center, valign: :center, size: 14
     )
     width = 270
@@ -230,7 +230,7 @@ class InvoicePdf < Prawn::Document
     
     define_grid(columns: 5, rows: 8, gutter: 10)
     grid([2, 0.1], [7.1, 2.2]).bounding_box do
-      text "#{@head.construction.image}"
+      # object "#{@head.construction.image}"
     end
     grid([2.38, 3.26], [7, 3.68]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|

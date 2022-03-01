@@ -5,6 +5,7 @@
         <thead>
           <tr>
             <th>出荷日時</th>
+            <th>受渡</th>
             <th>搬入車両</th>
             <th>備考</th>
             <th>納入先</th>
@@ -20,6 +21,13 @@
           <% @heads.order(ship_date: "DESC").each do |head| %>
             <tr>
               <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
+              <td>
+                <% if head.on_site == true %>
+                  現場渡
+                <% else %>
+                  工場渡
+                <% end %>
+              </td>
               <td><%= head.vehicle_i18n %></td>
               <td><%= head.remark %></td>
               <td><%= head.delivery %></td>

@@ -105,6 +105,7 @@ class Users::ShipmentsController < ApplicationController
       :order_no,
       :construction_id,
       :remark,
+      :on_site,
       :user_id,
       shippeds_attributes: [
         :id,
