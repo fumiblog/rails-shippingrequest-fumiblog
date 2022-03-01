@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+    <h2>出荷カレンダー</h2>
+    <p class="h3 text-end bg-dark text-white " id="RealtimeClockArea2"></p>
+    <div class="shipment-make-first">
+      <% if user_signed_in? %>
+        <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
+        <%= link_to "見積", users_companies_path, class: "btn btn-warning" %>
+        <% if @day.count == 0 %>
+        <% else %>
+          今日の予定は、納品が
+          <%= @day.count %>
+          件あります。ご安全に！
+        <% end %>
+      <% else %>
+      <% end %>
+    </div>
+    <div class="m-2" id='calendar'></div>
+    <%= javascript_pack_tag 'calendar/event' %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted h3">Weekly shipment</span>
+        <span class="badge bg-secondary rounded-pill"><%= @day_heads.count %></span>
+      </h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>担当</th>
+            <th>時間</th>
+            <th>現場</th>
+            <% if user_signed_in?%>
+              <th>詳細</th>
+            <% else %>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @day_heads.each do |day_data| %>
+            <tr>
+              <td><%= day_data.user.name %></td>
+              <td><%= link_to day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分"), invoice_users_shipments_path(:id => day_data.id, format: "pdf"), method: :post %></td>
+              <td><%= day_data.construction.company.name %>/<%= day_data.construction.name %></td>
+              <% if user_signed_in? %>
+                <td class="small">
+                  <% @shippeds.where(head_id: day_data.id).each do |shipped| %>
+                    <% if shipped.quantity == nil %>
+                    <% else %>
+                      <p>
+                        <%= shipped.body.product_name %>【<%= shipped.quantity %>】
+                      </p>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% else %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-sm-6">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Todo List</span>
+          <span class="badge bg-secondary rounded-pill"><%= @job_periods.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>期限</th>
+              <th>依頼</th>
+              <th>内容</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @job_periods.each do |job_period| %>
+              <% if job_period.completed == true %>
+                <tr>
+                  <td class="text-danger">完了<%= job_period.updated_at.strftime('%m-%d') %></td>
+                  <td class="text-muted"><%= job_period.person.company.name %>/
+                    <% if job_period.person.position == "" %>
+                      <%= job_period.person.name %>さん
+                    <% else %>
+                      <%= job_period.person.name %><%= job_period.person.position %>
+                    <% end %>
+                  </td>
+                  <td class="text-muted"><%= job_period.type_i18n %></td>
+                  <td class="text-muted"><%= job_period.content %></td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td>
+                    <%= job_period.date %>
+                    <%= link_to '完了', users_job_path(job_period, job: {completed: true}), method: :put, class: "btn btn-sm btn-success" %></td>
+                  <td>
+                    <%= job_period.person.company.name %>/
+                    <% if job_period.person.position == "" %>
+                      <%= job_period.person.name %>さん
+                    <% else %>
+                      <%= job_period.person.name %><%= job_period.person.position %>
+                    <% end %>
+                  </td>
+                  <td><%= job_period.type_i18n %></td>
+                  <td><%= job_period.content %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="request">
+      <div class="row">
+        <div class="col-sm border p-3 m-1">現場件数
+          <div class="h1 text-danger text-end"><%= @constructions.count %></div>
+        </div>
+        <div class="col-sm border p-3 m-1">顧客件数
+          <div class="h1 text-primary text-end"><%= @companies.count %></div>
+        </div>
+        <div class="col-sm border p-3 m-1">JOB依頼数
+          <div class="h1 text-warning text-end"><%= @jobs.count %></div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+  <% end %>
+</div>
+
+<script>
+  function set2fig(num){
+    var ret;
+    if(num < 10) {ret = "0" + num;}
+    else{ret = num;}
+    return ret;
+  }
+  function showClock2(){
+		var nowTime = new Date();
+		var nowHour = set2fig(nowTime.getHours());
+		var nowMin = set2fig(nowTime.getMinutes());
+		var nowSec = set2fig(nowTime.getSeconds());
+		var msg = nowHour + ":" + nowMin + ":" + nowSec;
+		document.getElementById("RealtimeClockArea2").innerHTML = msg;
+	}
+	setInterval('showClock2()' ,1000);
+</script>

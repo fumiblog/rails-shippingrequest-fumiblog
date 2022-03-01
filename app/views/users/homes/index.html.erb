@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
-    <h2>出荷カレンダー</h2>
-    <p class="h3 text-end bg-dark text-white " id="RealtimeClockArea2"></p>
-    <div class="shipment-make-first">
-      <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="row">
+      <h2>出荷カレンダー</h2>
+      <p class="h3 text-end bg-dark text-white " id="RealtimeClockArea2"></p>
+      <div class="shipment-make-first">
         <%= link_to "工事一覧", users_constructions_path, class: "btn btn-primary" %>
         <%= link_to "見積", users_companies_path, class: "btn btn-warning" %>
         <% if @day.count == 0 %>
@@ -12,37 +12,31 @@
           <%= @day.count %>
           件あります。ご安全に！
         <% end %>
-      <% else %>
-      <% end %>
+      </div>
+      <div class="m-2" id='calendar'></div>
+      <%= javascript_pack_tag 'calendar/event' %>
     </div>
-    <div class="m-2" id='calendar'></div>
-    <%= javascript_pack_tag 'calendar/event' %>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted h3">Weekly shipment</span>
-        <span class="badge bg-secondary rounded-pill"><%= @day_heads.count %></span>
-      </h4>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>担当</th>
-            <th>時間</th>
-            <th>現場</th>
-            <% if user_signed_in?%>
-              <th>詳細</th>
-            <% else %>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @day_heads.each do |day_data| %>
+    <div class="row">
+      <div class="col-sm-6">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted h3">Weekly shipment</span>
+          <span class="badge bg-secondary rounded-pill"><%= @day_heads.count %></span>
+        </h4>
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td><%= day_data.user.name %></td>
-              <td><%= link_to day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分"), invoice_users_shipments_path(:id => day_data.id, format: "pdf"), method: :post %></td>
-              <td><%= day_data.construction.company.name %>/<%= day_data.construction.name %></td>
-              <% if user_signed_in? %>
+              <th>担当</th>
+              <th>時間</th>
+              <th>現場</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @day_heads.each do |day_data| %>
+              <tr>
+                <td><%= day_data.user.name %></td>
+                <td><%= link_to day_data.ship_date.strftime("%-m月%-d日 %-H時%-M分"), invoice_users_shipments_path(:id => day_data.id, format: "pdf"), method: :post %></td>
+                <td><%= day_data.construction.company.name %>/<%= day_data.construction.name %></td>
                 <td class="small">
                   <% @shippeds.where(head_id: day_data.id).each do |shipped| %>
                     <% if shipped.quantity == nil %>
@@ -53,14 +47,11 @@
                     <% end %>
                   <% end %>
                 </td>
-              <% else %>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <% if user_signed_in? %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
       <div class="col-sm-6">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted h3">Todo List</span>
@@ -111,10 +102,7 @@
           </tbody>
         </table>
       </div>
-    <% else %>
-    <% end %>
-  </div>
-  <% if user_signed_in? %>
+    </div>
     <div class="request">
       <div class="row">
         <div class="col-sm border p-3 m-1">現場件数
@@ -129,6 +117,58 @@
       </div>
     </div>
   <% else %>
+    <div class="row">
+      <div class="title">
+        擁 壁<br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/2.PW_.pdf">
+          道路用L型擁壁・プレキャストウォール
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/3.WCN%E2%85%A2.pdf">
+          住宅用L型擁壁・ニューウォルコンⅢ
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/4.%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB.pdf">
+          車両防護柵L型擁壁・プロテクトウォール
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/5.KP_.pdf">
+          大型擁壁・KP大型ブロック
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/6.KK%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          環境保全型積ブロック・KKブロック
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/7.%E7%AE%B1%E5%9E%8B%E6%93%81%E5%A3%81.pdf">
+          箱型擁壁
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/8.%E3%82%A2%E3%83%87%E3%83%A0%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB.pdf">
+          垂直擁壁・アデムウォール
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/9.%E3%83%80%E3%83%A0%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB.pdf">
+          自立式砂防堰堤型枠ブロック・ダムウォール
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/10.BSB%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          砂防堰堤工法・BSBブロック
+        </a><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="title">
+        環境製品<br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/11.%E5%A4%A7%E5%9E%8B%E5%BC%B5%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          大型張りブロック・エコブロックさざなみ
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/12.%E9%98%B2%E7%81%BD%E5%9E%8B%E5%BC%B5%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          滑り止め張りブロック・防災型張りブロック
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/13.%E3%82%A2%E3%83%B3%E3%82%AB%E3%83%BC%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          法面／護岸工の帯工・アンカーブロック
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/14.%EF%BE%8C%EF%BE%9E%EF%BE%9B%EF%BD%AF%EF%BD%B8%EF%BE%8F%EF%BD%AF%EF%BE%84.pdf">
+          ブロックマット
+        </a><br />
+        <a href="https://www.kashiwagi-k.co.jp/manager/wp-content/uploads/2020/05/15.%E7%92%B0%E5%A2%83%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF.pdf">
+          魚巣ブロック・環境ブロック
+        </a><br />
+      </div>
+    </div>
   <% end %>
 </div>
 
