@@ -23,9 +23,9 @@
               <td><%= head.ship_date.strftime('%y-%m-%d %H:%M') %></td>
               <td>
                 <% if head.on_site == true %>
-                  現場渡
-                <% else %>
                   工場渡
+                <% else %>
+                  現場渡
                 <% end %>
               </td>
               <td><%= head.vehicle_i18n %></td>
