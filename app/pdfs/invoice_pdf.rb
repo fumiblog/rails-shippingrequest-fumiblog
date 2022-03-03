@@ -74,7 +74,7 @@ class InvoicePdf < Prawn::Document
     y = cursor - 10
     stroke_rectangle [580, y], width, height
     text_box(
-      "QR-code",
+      "",
       at: [580, y], width: width, height: height, align: :center, valign: :center, size: 14
     )
     width = 50
@@ -230,7 +230,7 @@ class InvoicePdf < Prawn::Document
     
     define_grid(columns: 5, rows: 8, gutter: 10)
     grid([2, 0.1], [7.1, 2.2]).bounding_box do
-      # object "#{@head.construction.image}"
+      # image "#{Prawn::DATADIR}#{@head.construction.image}"
     end
     grid([2.38, 3.26], [7, 3.68]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
