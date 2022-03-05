@@ -227,6 +227,9 @@ class InvoicePdf < Prawn::Document
       "数量",
       at: [750, y], width: width, height: height, align: :center, valign: :center, size: 11
     )
+
+    # image "#{@head.construction.image}", at[10, 300], width: 200
+
     
     define_grid(columns: 5, rows: 8, gutter: 10)
     grid([2, 0.1], [7.1, 2.2]).bounding_box do

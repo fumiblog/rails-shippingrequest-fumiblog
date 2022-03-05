@@ -47,10 +47,14 @@
             </li>
           <% end %>
         </ul>
-        <form action="" class="d-flex">
-          <input type="seatch" class="form-control me-2" placeholder="Search（調整中）" aria-lavel="Serch">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <%# <form action="" class="d-flex"> %>
+          <%= form_tag(users_companies_path, method: :get) do %>
+            <%= text_field_tag('search') %>
+            <%= submit_tag("search") %>
+          <% end %>
+          <%# <input type="seatch" class="form-control me-2" placeholder="Search（調整中）" aria-lavel="Serch">
+          <button class="btn btn-outline-success" type="submit">Search</button> %>
+        <%# </form> %>
       </div>
     </div>
   </nav>
