@@ -1,6 +1,7 @@
 class Head < ApplicationRecord
   belongs_to :user
   belongs_to :construction
+  belongs_to :company
   has_many :shippeds, dependent: :destroy
   has_many :bodies, through: :shippeds
   accepts_nested_attributes_for :shippeds, reject_if: :reject_shipped, allow_destroy: true

@@ -7,7 +7,8 @@ class Users::ShipmentsController < ApplicationController
     @bodies = Body.where(construction_id: params[:id]).order(created_at: "ASC")
     @heads = Head.where(construction_id: params[:id]).order(ship_date: "DESC")
     @shippeds = Shipped.where(head_id: @heads)
-    # byebug
+    @companies = Company.all
+    @persons = Person.all
   end
 
   def create
@@ -107,6 +108,8 @@ class Users::ShipmentsController < ApplicationController
       :remark,
       :on_site,
       :user_id,
+      :company_id,
+      :person_name,
       shippeds_attributes: [
         :id,
         :head_id,

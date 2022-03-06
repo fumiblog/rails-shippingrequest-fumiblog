@@ -16,7 +16,27 @@ class InvoicePdf < Prawn::Document
     @head = invoice
 
     content
-
+    
+    width = 140
+    height = 20
+    angle = 30
+    x = 200
+    y = cursor - 10
+    stroke_rectangle [0, y], width, height
+    text_box(
+      "#{@head.company.name}御中",
+      at: [0, y], width: width, height: height, align: :center, valign: :center, size: 10
+    )
+    width = 140
+    height = 20
+    angle = 30
+    x = 200
+    y = cursor - 30
+    stroke_rectangle [0, y], width, height
+    text_box(
+      "#{@head.person_name}　様",
+      at: [0, y], width: width, height: height, align: :center, valign: :center, size: 12
+    )
     width = 50
     height = 20
     angle = 30
@@ -228,7 +248,10 @@ class InvoicePdf < Prawn::Document
       at: [750, y], width: width, height: height, align: :center, valign: :center, size: 11
     )
 
-    # image "#{@head.construction.image}", at[10, 300], width: 200
+    # image "#{Prawn::DATADIR @head.construction.image.url}", at[10, 300], width: 200
+    # image "app/assets/images/kashiwagi.png", :at => [50,450], :scale => 0.5
+    # image "public/uploads/construction/image/18/PNGイメージ.png", :at => [50,450], :scale => 0.5
+    image "public#{@head.construction.image.url}", :at => [0,200], :scale => 0.5
 
     
     define_grid(columns: 5, rows: 8, gutter: 10)
