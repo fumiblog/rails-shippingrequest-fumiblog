@@ -251,7 +251,7 @@ class InvoicePdf < Prawn::Document
     # image "#{Prawn::DATADIR @head.construction.image.url}", at[10, 300], width: 200
     # image "app/assets/images/kashiwagi.png", :at => [50,450], :scale => 0.5
     # image "public/uploads/construction/image/18/PNGイメージ.png", :at => [50,450], :scale => 0.5
-    image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.33
+    image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.31
 
     
     define_grid(columns: 5, rows: 8, gutter: 10)
