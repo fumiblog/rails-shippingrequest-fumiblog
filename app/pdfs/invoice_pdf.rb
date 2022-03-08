@@ -155,7 +155,7 @@ class InvoicePdf < Prawn::Document
     stroke_rectangle [580, y], width, height
     text_box(
       "#{@head.construction.name}",
-      at: [580, y], width: width, height: height, align: :center, valign: :center, size: 14
+      at: [580, y], width: width, height: height, align: :center, valign: :center, size: 12
     )
     width = 50
     height = 20
@@ -248,10 +248,12 @@ class InvoicePdf < Prawn::Document
       at: [750, y], width: width, height: height, align: :center, valign: :center, size: 11
     )
 
-    # image "#{Prawn::DATADIR @head.construction.image.url}", at[10, 300], width: 200
-    # image "app/assets/images/kashiwagi.png", :at => [50,450], :scale => 0.5
-    # image "public/uploads/construction/image/18/PNGイメージ.png", :at => [50,450], :scale => 0.5
-    image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.31
+    if "
+      #{@construction = Construction.find(@head.construction_id)}"
+      "#{@construction.image}" == nil
+    else
+      image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.31
+    end
 
     
     define_grid(columns: 5, rows: 8, gutter: 10)
@@ -263,10 +265,13 @@ class InvoicePdf < Prawn::Document
         stroke_horizontal_rule
         pad(8) { text "　#{shipped.body.product_name}",size: 10 }
       end
-      text "
-      - 備 考 -----------------------------------------
-      
-      　#{@head.remark}"
+      if "#{@head.remark}" == ""
+      else
+        text "
+        - 備 考 -----------------------------------------
+        
+        　#{@head.remark}"
+      end
     end
     grid([2.38, 3.68], [7, 3.99]).bounding_box do
       Shipped.where(head_id: @head.id).each do |shipped|
