@@ -17,6 +17,9 @@ class Head < ApplicationRecord
     h7t: 2,
     h10t: 3,
     h13t: 4,
-    traler: 5
+    traler: 5,
+    kogata: 6,
+    chugata: 7,
+    oogata: 8
   }
 end

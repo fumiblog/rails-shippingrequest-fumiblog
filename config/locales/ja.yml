@@ -15,6 +15,9 @@ ja:
         h10t: "10t"
         h13t: "13t"
         traler: "トレーラー"
+        kogata: "小型"
+        chugata: "中型"
+        oogata: "大型"
     body:
       format:
         ke: "ケ"
