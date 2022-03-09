@@ -45,19 +45,20 @@ class Users::ShipmentsController < ApplicationController
   def invoice
     # byebug
     @head = Head.find(params[:id])
+    # byebug
     @shippeds = Shipped.where(head_id: @head.id)
     # byebug
     respond_to do |format|
       format.html
       format.pdf do 
         pdf = InvoicePdf.new(@head)
-        
         send_data pdf.render,
         filename: "invoice.pdf",
         type: "application/pdf",
         disposition: "inline"
       end
     end
+    # @construction = Construction.find(@head.construction_id)
     # byebug
   end
 

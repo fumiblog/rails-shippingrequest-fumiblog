@@ -248,9 +248,8 @@ class InvoicePdf < Prawn::Document
       at: [750, y], width: width, height: height, align: :center, valign: :center, size: 11
     )
 
-    if "
-      #{@construction = Construction.find(@head.construction_id)}"
-      "#{@construction.image}" == nil
+    @construction = Construction.find(@head.construction_id)
+    if @construction.image.url == nil
     else
       image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.31
     end
