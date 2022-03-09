@@ -50,7 +50,8 @@ class Users::ConstructionsController < ApplicationController
       :user_id,
       :remark,
       :company_id,
-      :image
+      :image,
+      :complete
     )
   end
 end

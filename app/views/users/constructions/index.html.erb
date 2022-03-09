@@ -32,6 +32,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th scope="col" class="text-nowrap">完了</th>
               <th scope="col" class="text-nowrap">得意先</th>
               <th scope="col" class="text-nowrap">納入先</th>
               <th scope="col" class="text-nowrap">Map</th>
@@ -47,6 +48,14 @@
           <tbody>
             <% @constructions.each do |construction| %>
             <tr>
+              <td>
+                <%= construction.complete ? '完了！' : '工事中' %>
+                <% if construction.complete %>
+                  <%= link_to '工事中に戻す', users_construction_path(construction, construction: {complete: false}), method: :put, class: "btn btn-sm btn-danger" %>
+                <% else %>
+                  <%= link_to '完了にする', users_construction_path(construction, construction: {complete: true}), method: :put, class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
               <td>
                 <%= construction.company.name %>
               </td>
