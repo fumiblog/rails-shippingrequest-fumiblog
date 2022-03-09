@@ -74,7 +74,7 @@ class InvoicePdf < Prawn::Document
     y = cursor - 10
     stroke_rectangle [390, y], width, height
     text_box(
-      "#{@head.vehicle}",
+      "#{@head.vehicle_i18n}",
       at: [390, y], width: width, height: height, align: :center, valign: :center, size: 14
     )
     width = 50
@@ -135,7 +135,7 @@ class InvoicePdf < Prawn::Document
     stroke_rectangle [390, y], width, height
     text_box(
       "#{@head.delivery}",
-      at: [390, y], width: width, height: height, align: :center, valign: :center, size: 14
+      at: [390, y], width: width, height: height, align: :center, valign: :center, size: 12
     )
     width = 50
     height = 20
