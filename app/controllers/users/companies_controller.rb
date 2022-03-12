@@ -1,9 +1,19 @@
 class Users::CompaniesController < ApplicationController
   def index
     if params[:search] == nil
-      @companies = Company.all
-      @company = Company.new
-      @persons = Person.all
+      if params[:key] == "supplier"
+        @companies = Company.where(supplier: true)
+        @company = Company.new
+        @persons = Person.all
+      elsif params[:key] == "user"
+        @companies = Company.where(supplier: false)
+        @company = Company.new
+        @persons = Person.all
+      else
+        @companies = Company.all
+        @company = Company.new
+        @persons = Person.all
+      end
     else
       @companies = Company.where('name LIKE ?', "%#{params[:search]}%")
       @company = Company.new
