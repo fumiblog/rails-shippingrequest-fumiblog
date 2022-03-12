@@ -517,6 +517,9 @@ GEM
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
+    rqrcode_png (0.1.5)
+      chunky_png
+      rqrcode
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
@@ -628,6 +631,7 @@ DEPENDENCIES
   redcarpet
   rmagick
   rqrcode
+  rqrcode_png
   sass-rails (>= 6)
   selenium-webdriver
   spring

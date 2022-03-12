@@ -65,6 +65,7 @@ gem 'redcarpet' #マークダウン
 gem 'prawn'
 gem 'prawn-table'
 gem 'rqrcode'
+gem 'rqrcode_png'
 
 #Backend
 gem 'devise'

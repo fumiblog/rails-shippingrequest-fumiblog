@@ -45,6 +45,7 @@ class Users::CompaniesController < ApplicationController
       :tel,
       :fax,
       :ceo,
+      :supplier,
       :user_id
     )
   end

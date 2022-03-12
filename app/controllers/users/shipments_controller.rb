@@ -7,7 +7,7 @@ class Users::ShipmentsController < ApplicationController
     @bodies = Body.where(construction_id: params[:id]).order(created_at: "ASC")
     @heads = Head.where(construction_id: params[:id]).order(ship_date: "DESC")
     @shippeds = Shipped.where(head_id: @heads)
-    @companies = Company.all
+    @companies = Company.where(supplier: true)
     @persons = Person.all
   end
 
@@ -45,6 +45,7 @@ class Users::ShipmentsController < ApplicationController
   def invoice
     # byebug
     @head = Head.find(params[:id])
+    @construction = Construction.find(@head.construction_id)
     # byebug
     @shippeds = Shipped.where(head_id: @head.id)
     # byebug
@@ -57,8 +58,8 @@ class Users::ShipmentsController < ApplicationController
         type: "application/pdf",
         disposition: "inline"
       end
+      
     end
-    # @construction = Construction.find(@head.construction_id)
     # byebug
   end
 
