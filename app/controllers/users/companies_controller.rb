@@ -1,5 +1,6 @@
 class Users::CompaniesController < ApplicationController
   def index
+    # byebug
     if params[:search] == nil
       if params[:key] == "supplier"
         @companies = Company.where(supplier: true)
@@ -7,6 +8,10 @@ class Users::CompaniesController < ApplicationController
         @persons = Person.all
       elsif params[:key] == "user"
         @companies = Company.where(supplier: false)
+        @company = Company.new
+        @persons = Person.all
+      elsif params[:key]
+        @companies = Company.where('address LIKE ?', "%#{params[:key]}%")
         @company = Company.new
         @persons = Person.all
       else

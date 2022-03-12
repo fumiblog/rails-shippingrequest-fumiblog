@@ -34,9 +34,25 @@
   <div class="company-list m-2 p-2">
     <h4>
       Company List!　
-      <%= link_to "Supplier", users_companies_path(key: "supplier") %>　
-      <%= link_to "User", users_companies_path(key: "user") %>　
-      <%= link_to "All", users_companies_path %>
+      <%= link_to "All", users_companies_path %>　
+      <%= link_to "Users", users_companies_path(key: "user") %>　
+      <%= link_to "Suppliers", users_companies_path(key: "supplier") %>　
+      <%= link_to "久留米", users_companies_path(key: "久留米") %>　
+      <%= link_to "柳川", users_companies_path(key: "柳川") %>　
+      <%= link_to "城島", users_companies_path(key: "城島") %>　
+      <%= link_to "大川", users_companies_path(key: "大川") %>　
+      <%= link_to "大牟田", users_companies_path(key: "大牟田") %>　
+      <%= link_to "三潴", users_companies_path(key: "三潴") %>　
+      <%= link_to "大木", users_companies_path(key: "大木") %>　
+      <%= link_to "筑後", users_companies_path(key: "筑後") %>　
+      <%= link_to "みやま", users_companies_path(key: "みやま") %>　
+      <%= link_to "八女", users_companies_path(key: "八女") %>　
+      <%= link_to "広川", users_companies_path(key: "広川") %>　
+      <%= link_to "朝倉", users_companies_path(key: "朝倉") %>　
+      <%= link_to "うきは", users_companies_path(key: "うきは") %>　
+      <%= link_to "小郡", users_companies_path(key: "小郡
+      ") %>　
+      <%= link_to "太刀洗", users_companies_path(key: "太刀洗") %>　
     </h4>
     <div class="row row-cols-2 row-cols-md-4 g-4">
       <% @companies.each do |company| %>
