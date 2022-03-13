@@ -70,7 +70,11 @@
               <% @persons.where(company_id: company.id).each do |person| %>
                 <% if person.position == "" %>
                   <div class="card-text m-2">
-                    <%= link_to person.name, users_jobs_path(:id => person.id) %>さん(<%= person.handy_phone %>)
+                    <% if person.handy_phone == "" %>
+                      <%= link_to person.name, users_jobs_path(:id => person.id) %>さん
+                    <% else %>
+                      <%= link_to person.name, users_jobs_path(:id => person.id) %>さん(<%= person.handy_phone %>)
+                    <% end %>
                     <% if person.jobs.count == 0 %>
                     <% else %>
                       <span class="badge bg-danger rounded-pill"><%= person.jobs.count %></span>
@@ -78,7 +82,11 @@
                   </div>
                 <% else %>
                   <div class="card-text m-2">
-                    <%= link_to person.name, users_jobs_path(:id => person.id) %><%= person.position %>(<%= person.handy_phone %>)
+                    <% if person.handy_phone == "" %>
+                      <%= link_to person.name, users_jobs_path(:id => person.id) %><%= person.position %>
+                    <% else %>
+                      <%= link_to person.name, users_jobs_path(:id => person.id) %><%= person.position %>(<%= person.handy_phone %>)
+                    <% end %>
                     <% if person.jobs.count == 0 %>
                     <% else %>
                       <span class="badge bg-danger rounded-pill"><%= person.jobs.count %></span>
