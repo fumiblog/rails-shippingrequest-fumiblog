@@ -124,7 +124,7 @@
                 <td class="text-danger">完了<%= job.updated_at.strftime('%m-%d') %></td>
                 <td class="text-muted">
                   <% if job.person.position == "" %>
-                    <%= job.person.name %>さん
+                    <%= job.person.name %>　さん
                   <% else %>
                     <%= job.person.name %><%= job.person.position %>
                   <% end %>
@@ -139,7 +139,7 @@
                   <%= link_to '完了', users_job_path(job, job: {completed: true}), method: :put, class: "btn btn-sm btn-success" %></td>
                 <td>
                   <% if job.person.position == "" %>
-                    <%= job.person.name %>さん
+                    <%= job.person.name %>　さん
                   <% else %>
                     <%= job.person.name %><%= job.person.position %>
                   <% end %>
