@@ -42,7 +42,7 @@
       <%= link_to "城島", users_companies_path(key: "城島") %>　
       <%= link_to "大川", users_companies_path(key: "大川") %>　
       <%= link_to "大牟田", users_companies_path(key: "大牟田") %>　
-      <%= link_to "三潴", users_companies_path(key: "三潴") %>　
+      <%= link_to "三潴", users_companies_path(key: "三潴町") %>　
       <%= link_to "大木", users_companies_path(key: "大木") %>　
       <%= link_to "筑後", users_companies_path(key: "筑後") %>　
       <%= link_to "みやま", users_companies_path(key: "みやま") %>　
@@ -60,7 +60,7 @@
           <div class="card">
             <div class="card-body border">
               <h5 class="card-title">
-                <%= company.name %>　<%= company.ceo %>社長
+                <%= link_to company.name, users_companies_path(:id => company.id) %>　<%= company.ceo %>社長
                 <% if company.construction.count == 0 %>
                 <% else %>
                   <span class="badge bg-success rounded-pill"><%= link_to company.construction.count, users_constructions_path(:id => company.id), class: "text-white" %></span>
@@ -102,5 +102,55 @@
         </div>
       <% end %>
     </div>
+    <% if @jobs == nil %>
+    <% else %>
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted h3">Job List</span>
+        <span class="badge bg-secondary rounded-pill"><%= @jobs.count %></span>
+      </h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>期限</th>
+            <th>依頼</th>
+            <th>内容</th>
+            <th>詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @jobs.each do |job| %>
+            <% if job.completed == true %>
+              <tr>
+                <td class="text-danger">完了<%= job.updated_at.strftime('%m-%d') %></td>
+                <td class="text-muted">
+                  <% if job.person.position == "" %>
+                    <%= job.person.name %>さん
+                  <% else %>
+                    <%= job.person.name %><%= job.person.position %>
+                  <% end %>
+                </td>
+                <td class="text-muted"><%= job.type_i18n %></td>
+                <td class="text-muted"><%= job.content %></td>
+              </tr>
+            <% else %>
+              <tr>
+                <td>
+                  <%= job.date %>
+                  <%= link_to '完了', users_job_path(job, job: {completed: true}), method: :put, class: "btn btn-sm btn-success" %></td>
+                <td>
+                  <% if job.person.position == "" %>
+                    <%= job.person.name %>さん
+                  <% else %>
+                    <%= job.person.name %><%= job.person.position %>
+                  <% end %>
+                </td>
+                <td><%= job.type_i18n %></td>
+                <td><%= job.content %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>

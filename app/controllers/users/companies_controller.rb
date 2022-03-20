@@ -14,13 +14,26 @@ class Users::CompaniesController < ApplicationController
         @companies = Company.where('address LIKE ?', "%#{params[:key]}%")
         @company = Company.new
         @persons = Person.all
+        # byebug
+      elsif params[:id]
+        @companies = Company.where(id: params[:id])
+        @companies.each do |company|
+          @jobs = Job.where(person_id: company.persons.ids)
+        end
+        @company = Company.new
+        @persons = Person.all
+        # byebug
       else
         @companies = Company.all
         @company = Company.new
         @persons = Person.all
+        # byebug
       end
     else
       @companies = Company.where('name LIKE ?', "%#{params[:search]}%")
+      @companies.each do |company|
+        @jobs = Job.where(person_id: company.persons.ids)
+      end
       @company = Company.new
       @persons = Person.all
       # byebug
