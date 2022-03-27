@@ -17,5 +17,5 @@ end
 json.array! @job_incompletes do |job|
   # json.id String{Number(@job.id) + 10000}
   json.start job.date
-  json.title job.person.name + 'さん）' + job.type_i18n + job.content
+  json.title job.person.company.name + job.type_i18n + job.content
 end
