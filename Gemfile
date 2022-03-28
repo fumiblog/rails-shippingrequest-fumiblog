@@ -85,3 +85,4 @@ gem 'uglifier', '~> 4.2'
 gem 'gon'
 gem 'i18n-js'
 gem 'carrierwave'
+# gem "heroku-forward"
