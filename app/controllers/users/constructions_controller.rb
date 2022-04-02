@@ -1,10 +1,13 @@
 class Users::ConstructionsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if params[:id] == nil
-      @constructions = Construction.where(user_id: current_user.id)
+      @constructions_all = Construction.where(user_id: current_user.id)
+      @constructions = @constructions_all.where(complete: false).order(company_id: "DESC")
     else
       @user_const = Construction.where(user_id: current_user.id)
-      @constructions = Construction.where(company_id: params[:id])
+      @constructions = Construction.where(company_id: params[:id]).order(complete: "ASC")
       
     end
     @bodies = Body.all
@@ -16,6 +19,7 @@ class Users::ConstructionsController < ApplicationController
   def create
     @construction = Construction.new(construction_params)
     @construction.user_id = current_user.id
+    @construction.complete = false
     @construction.save!
     redirect_to users_constructions_path
   end

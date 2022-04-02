@@ -30,11 +30,11 @@ ja:
         ton: "t"
     job:
       type:
-        mitsumori: "見積"
-        syouninirai: "承認依頼"
-        nouhinyotei: "納品予定"
-        kojoukensa: "工場検査"
-        kuremu: "クレーム"
-        wariatezu: "割当図"
-        shukin: "集金"
+        mitsumori: "見積　"
+        syouninirai: "承認依頼　"
+        nouhinyotei: "納品予定　"
+        ketsuron: "結論待ち　"
+        kuremu: "クレーム　"
+        tsurikanagu: "吊金具回収　"
+        shukin: "集金　"
         sonota: "その他"

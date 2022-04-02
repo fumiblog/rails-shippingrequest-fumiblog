@@ -1,4 +1,6 @@
 class Users::JobsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @job = Job.new
     @person = Person.find(params[:id])

@@ -74,7 +74,7 @@ gem 'acts-as-taggable-on' #タグ付け
 gem 'kaminari' #ページネーション
 gem 'carrierwave' #画像アップロード
 gem 'rmagick' #画像リサイズ
-gem 'fog' #画像アップロード
+gem 'fog-aws' #画像アップロード
 gem 'meta-tags' #SEO対策
 gem 'google-analytics-rails' #Google Analytics
 gem 'google-api-client' #Google API
@@ -84,4 +84,4 @@ gem 'pry-byebug'
 gem 'uglifier', '~> 4.2'
 gem 'gon'
 gem 'i18n-js'
-gem 'carrierwave'
+# gem "heroku-forward"

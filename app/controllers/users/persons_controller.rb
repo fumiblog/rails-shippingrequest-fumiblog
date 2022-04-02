@@ -1,4 +1,6 @@
 class Users::PersonsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @person = Person.new
     @company = Company.find(params[:id])

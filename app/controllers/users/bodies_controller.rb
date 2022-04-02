@@ -1,4 +1,6 @@
 class Users::BodiesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     # byebug
     @construction = Construction.find(params[:construction_id])

@@ -7,9 +7,9 @@ class Job < ApplicationRecord
     mitsumori: 0,
     syouninirai: 1,
     nouhinyotei: 2,
-    kojoukensa: 3,
+    ketsuron: 3,
     kuremu: 4,
-    wariatezu: 5,
+    tsurikanagu: 5,
     shukin: 6,
     sonota: 7
   }

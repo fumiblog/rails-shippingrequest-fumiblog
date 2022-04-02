@@ -1,4 +1,6 @@
 class Users::CompaniesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     # byebug
     if params[:search] == nil
