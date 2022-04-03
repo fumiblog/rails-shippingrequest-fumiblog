@@ -250,6 +250,34 @@ class InvoicePdf < Prawn::Document
 
     @construction = Construction.find(@head.construction_id)
     if @construction.image.url == nil
+    elsif @head.delivery_tel == @construction.company.tel
+      width = 50
+      height = 20
+      angle = 30
+      x = 200
+      y = cursor - 120
+      stroke_rectangle [100, y], width, height
+      text_box(
+        "配送先",
+      at: [100, y], width: width, height: height, align: :center, valign: :center, size: 11
+      )
+      width = 350
+      height = 120
+      angle = 30
+      x = 200
+      y = cursor - 150
+      stroke_rectangle [100, y], width, height
+      text_box(
+        "#{@head.delivery}
+
+         #{@head.delivery_address}
+
+         #{@construction.person}　様宛
+
+         #{@head.delivery_tel}
+        ",
+      at: [110, y-10], width: width, height: height, size: 15
+      )
       
     else
       image "public#{@head.construction.image.url}", :at => [0,380], :scale => 0.31

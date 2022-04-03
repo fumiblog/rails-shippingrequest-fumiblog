@@ -80,14 +80,20 @@
                 <div class="form-label">TEL</div>
                 <%= f.text_field :delivery_tel, class: "form-control" %>
               </div>
-            </div>
-            <div class="row g-3">
               <div class="col-sm-12">
-                <div class="form-label">納入住所</div>
+                <div class="form-label">住所</div>
                 <%= f.text_field :delivery_address, class: "form-control" %>
               </div>
-              <%= f.hidden_field :construction_id, :value => @construction.id %>
-            </div>
+            </div><br />
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <div class="form-label">
+                  <%= radio_button_tag :flag, 2 %>会社
+                </div>
+                <%= @construction.company.name %>（<%= @construction.company.address %>）<%= @construction.person %>さん（<%= @construction.company.tel %>）
+              </div>
+            </div> <br />
+             <%= f.hidden_field :construction_id, :value => @construction.id %>
           </div>
         </div>
         <div class="col-md-5 col-lg-4 order-md-last">

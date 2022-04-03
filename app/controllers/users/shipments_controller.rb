@@ -25,6 +25,11 @@ class Users::ShipmentsController < ApplicationController
       @head.delivery_person = @construction.person
       @head.delivery_tel = @construction.tel
     elsif params[:flag] == '1'
+    elsif params[:flag] == '2'
+      @head.delivery = @construction.company.name
+      @head.delivery_address = @construction.company.address
+      @head.delivery_person = @construction.person
+      @head.delivery_tel = @construction.company.tel
     end
     @head.user_id = current_user.id
     # byebug
