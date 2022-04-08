@@ -55,6 +55,7 @@ class Users::ConstructionsController < ApplicationController
       :remark,
       :company_id,
       :image,
+      :image_cache,
       :complete
     )
   end
