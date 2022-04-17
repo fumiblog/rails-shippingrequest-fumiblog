@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4 border mt-5 text-center">
-      <h2>社員 Login</h2>
+      <h2>いらっしゃいませ</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :mail %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email",:size => "30" %>
         </div>
 
@@ -27,8 +27,10 @@
         </div>
       <% end %>
 
-      <%= render "users/shared/links" %>
+      <%= render "customers/shared/links" %>
     </div>
     <div class="col-sm-4"></div>
   </div>
 </div>
+
+
