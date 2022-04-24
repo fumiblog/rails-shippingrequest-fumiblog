@@ -84,4 +84,8 @@ gem 'pry-byebug'
 gem 'uglifier', '~> 4.2'
 gem 'gon'
 gem 'i18n-js'
+<<<<<<< HEAD
+=======
+gem 'carrierwave'
+>>>>>>> main
 # gem "heroku-forward"
